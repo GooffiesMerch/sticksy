@@ -210,12 +210,32 @@ function Index() {
                 </DialogHeader>
                 <div className="overflow-hidden rounded-lg bg-black">
                   <video
+                    ref={videoRef}
                     src={tutorialVideo.url}
                     controls
                     autoPlay
                     playsInline
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    onVolumeChange={(e) => setIsMuted((e.target as HTMLVideoElement).muted)}
                     className="aspect-video w-full"
                   />
+                </div>
+                <div className="flex justify-center gap-2">
+                  <Button variant="outline" size="sm" onClick={togglePlay}>
+                    {isPlaying ? (
+                      <><Pause className="mr-1 h-4 w-4" /> Pause</>
+                    ) : (
+                      <><Play className="mr-1 h-4 w-4" /> Play</>
+                    )}
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={toggleMute}>
+                    {isMuted ? (
+                      <><VolumeX className="mr-1 h-4 w-4" /> Unmute</>
+                    ) : (
+                      <><Volume2 className="mr-1 h-4 w-4" /> Mute</>
+                    )}
+                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
