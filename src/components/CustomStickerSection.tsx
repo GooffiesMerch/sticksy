@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useCartStore } from "@/stores/cartStore";
 import { fetchProductByHandle } from "@/lib/shopify";
+import acMockup from "@/assets/ac-blank-mockup.jpg";
 
 export function CustomStickerSection() {
   const [preview, setPreview] = useState<string | null>(null);
