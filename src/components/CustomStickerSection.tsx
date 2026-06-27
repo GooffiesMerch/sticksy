@@ -108,9 +108,10 @@ export function CustomStickerSection() {
                 <img
                   src={preview}
                   alt="Your sticker on AC"
-                  className="absolute object-cover"
-                  style={{ left: "7%", top: "6%", width: "86%", height: "66%" }}
+                  className="absolute object-contain drop-shadow-sm"
+                  style={{ left: "9%", top: "8%", width: "82%", height: "60%" }}
                 />
+
               ) : (
                 <p className="absolute inset-x-0 bottom-3 px-4 text-center text-xs text-muted-foreground">
                   Upload artwork to preview it on the AC.
