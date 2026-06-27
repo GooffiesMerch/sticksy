@@ -109,7 +109,7 @@ export function CustomStickerSection() {
                   src={preview}
                   alt="Your sticker on AC"
                   className="absolute object-cover"
-                  style={{ left: "25%", top: "29%", width: "50%", height: "33%" }}
+                  style={{ left: "7%", top: "6%", width: "86%", height: "66%" }}
                 />
               ) : (
                 <p className="absolute inset-x-0 bottom-3 px-4 text-center text-xs text-muted-foreground">
