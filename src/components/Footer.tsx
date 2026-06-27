@@ -14,7 +14,7 @@ export function Footer() {
             width={180}
             height={80}
             loading="lazy"
-            className="h-16 w-auto object-contain"
+            className="h-12 w-auto max-w-[160px] object-contain sm:h-14 sm:max-w-[180px] md:h-16"
           />
           <p className="text-sm text-muted-foreground">
             Premium AC stickers & custom skins. Transform your room, one wall unit at a time.
