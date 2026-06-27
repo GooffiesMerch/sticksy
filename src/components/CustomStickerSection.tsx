@@ -108,25 +108,18 @@ export function CustomStickerSection() {
                 <img
                   src={preview}
                   alt="Your sticker on AC"
-                  className="absolute object-contain drop-shadow-sm"
-                  style={{ left: "9%", top: "8%", width: "82%", height: "60%" }}
+                  className="absolute object-cover"
+                  style={{ left: "7%", top: "6%", width: "86%", height: "66%" }}
                 />
-
               ) : (
                 <p className="absolute inset-x-0 bottom-3 px-4 text-center text-xs text-muted-foreground">
                   Upload artwork to preview it on the AC.
                 </p>
               )}
             </div>
-            {preview && (
-              <p className="mt-3 text-center text-xs font-medium text-primary">
-                We Will Adjust Your Design According To The Exact Size.
-              </p>
-            )}
             <Button className="mt-6" onClick={handleAdd} disabled={!preview || busy}>
               {busy ? "Adding..." : "Add to cart"}
             </Button>
-
           </div>
         </div>
       </div>
