@@ -13,7 +13,7 @@ import { fetchProducts } from "@/lib/shopify";
 import { COLLECTIONS } from "@/lib/collections";
 import { toast } from "sonner";
 
-import heroImg from "@/assets/hero-ac.jpg";
+import heroImg from "@/assets/hero-porsche.webp.asset.json";
 import howto1 from "@/assets/howto-1.jpg";
 import howto2 from "@/assets/howto-2.jpg";
 import applied1 from "@/assets/applied-1.jpg";
@@ -85,7 +85,7 @@ function Index() {
           <div className="relative">
             <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-2xl" />
             <img
-              src={heroImg}
+              src={heroImg.url}
               alt="Air conditioner with custom anime sticker in a modern living room"
               width={1600}
               height={1024}
