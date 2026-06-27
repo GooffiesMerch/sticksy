@@ -102,12 +102,18 @@ export function CustomStickerSection() {
               <ShoppingCart className="h-5 w-5" />
             </div>
             <h3 className="text-lg font-semibold">Preview & Add to Cart</h3>
-            <div className="mt-3 flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg bg-muted">
+            <div className="relative mt-3 aspect-video w-full overflow-hidden rounded-lg bg-white">
+              <img src={acMockup} alt="AC mockup" className="absolute inset-0 h-full w-full object-cover" />
               {preview ? (
-                <img src={preview} alt="Your sticker preview" className="h-full w-full object-cover" />
+                <img
+                  src={preview}
+                  alt="Your sticker on AC"
+                  className="absolute object-cover"
+                  style={{ left: "25%", top: "29%", width: "50%", height: "33%" }}
+                />
               ) : (
-                <p className="px-4 text-center text-xs text-muted-foreground">
-                  Your uploaded artwork preview will appear here.
+                <p className="absolute inset-x-0 bottom-3 px-4 text-center text-xs text-muted-foreground">
+                  Upload artwork to preview it on the AC.
                 </p>
               )}
             </div>
