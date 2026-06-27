@@ -1,28 +1,26 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { COLLECTIONS } from "@/lib/collections";
+import logo from "@/assets/sticksy-logo.png";
 
 export function Footer() {
   return (
     <footer className="border-t bg-muted/40">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
         <div className="space-y-3">
-          <div className="text-xl font-semibold tracking-tight">Sticksy</div>
+          <img
+            src={logo}
+            alt="Sticksy"
+            width={56}
+            height={56}
+            loading="lazy"
+            className="h-14 w-14 object-contain"
+          />
           <p className="text-sm text-muted-foreground">
             Premium AC stickers & custom skins. Transform your room, one wall unit at a time.
           </p>
-          <div className="flex gap-3 pt-2 text-muted-foreground">
-            <a href="#" aria-label="Instagram" className="hover:text-foreground">
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a href="#" aria-label="Facebook" className="hover:text-foreground">
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a href="#" aria-label="Twitter" className="hover:text-foreground">
-              <Twitter className="h-5 w-5" />
-            </a>
-          </div>
         </div>
+
 
         <div>
           <h4 className="mb-3 text-sm font-semibold">Collections</h4>
