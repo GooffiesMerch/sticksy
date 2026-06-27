@@ -120,6 +120,11 @@ export function CustomStickerSection() {
             <Button className="mt-6" onClick={handleAdd} disabled={!preview || busy}>
               {busy ? "Adding..." : "Add to cart"}
             </Button>
+            {preview && (
+              <p className="mt-3 text-center text-xs text-muted-foreground">
+                We Will Adjust Your Sticker According To The AC Size, Thanks!
+              </p>
+            )}
           </div>
         </div>
       </div>
