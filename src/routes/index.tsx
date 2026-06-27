@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
-import { ArrowRight, Star, Sparkles, Truck, ShieldCheck, Send, PlayCircle } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import { ArrowRight, Star, Sparkles, Truck, ShieldCheck, Send, PlayCircle, Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -52,6 +52,28 @@ function Index() {
   const { data: products } = useSuspenseQuery(productsQueryOptions);
   const [showAll, setShowAll] = useState(false);
   const visible = useMemo(() => (showAll ? products : products.slice(0, 8)), [products, showAll]);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const togglePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setIsPlaying(true);
+    } else {
+      v.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -188,12 +210,32 @@ function Index() {
                 </DialogHeader>
                 <div className="overflow-hidden rounded-lg bg-black">
                   <video
+                    ref={videoRef}
                     src={tutorialVideo.url}
                     controls
                     autoPlay
                     playsInline
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    onVolumeChange={(e) => setIsMuted((e.target as HTMLVideoElement).muted)}
                     className="aspect-video w-full"
                   />
+                </div>
+                <div className="flex justify-center gap-2">
+                  <Button variant="outline" size="sm" onClick={togglePlay}>
+                    {isPlaying ? (
+                      <><Pause className="mr-1 h-4 w-4" /> Pause</>
+                    ) : (
+                      <><Play className="mr-1 h-4 w-4" /> Play</>
+                    )}
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={toggleMute}>
+                    {isMuted ? (
+                      <><VolumeX className="mr-1 h-4 w-4" /> Unmute</>
+                    ) : (
+                      <><Volume2 className="mr-1 h-4 w-4" /> Mute</>
+                    )}
+                  </Button>
                 </div>
               </DialogContent>
             </Dialog>
