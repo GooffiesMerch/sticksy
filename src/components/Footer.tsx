@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { COLLECTIONS } from "@/lib/collections";
-import logo from "@/assets/sticksy-logo.png";
+import logo from "@/assets/sticksy-logo.png.asset.json";
 
 export function Footer() {
   return (
@@ -9,17 +9,18 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
         <div className="space-y-3">
           <img
-            src={logo}
+            src={logo.url}
             alt="Sticksy"
-            width={56}
-            height={56}
+            width={180}
+            height={80}
             loading="lazy"
-            className="h-14 w-14 object-contain"
+            className="h-16 w-auto object-contain"
           />
           <p className="text-sm text-muted-foreground">
             Premium AC stickers & custom skins. Transform your room, one wall unit at a time.
           </p>
         </div>
+
 
 
         <div>
