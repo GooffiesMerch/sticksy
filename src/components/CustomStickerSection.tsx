@@ -118,9 +118,15 @@ export function CustomStickerSection() {
                 </p>
               )}
             </div>
+            {preview && (
+              <p className="mt-3 text-center text-xs font-medium text-primary">
+                We Will Adjust Your Design According To The Exact Size.
+              </p>
+            )}
             <Button className="mt-6" onClick={handleAdd} disabled={!preview || busy}>
               {busy ? "Adding..." : "Add to cart"}
             </Button>
+
           </div>
         </div>
       </div>
