@@ -257,18 +257,25 @@ function Index() {
               key={c.slug}
               to="/collections/$slug"
               params={{ slug: c.slug }}
-              className="group flex flex-col items-center gap-4 rounded-2xl border bg-card p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="group overflow-hidden rounded-2xl border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="flex h-32 w-32 items-center justify-center rounded-2xl bg-muted">
-                <img src={c.logo} alt={c.name} className="h-24 w-24 object-contain" loading="lazy" />
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src={c.logo}
+                  alt={c.name}
+                  width={512}
+                  height={512}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
               </div>
-              <div>
-                <h3 className="text-lg font-semibold">{c.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{c.tagline}</p>
+              <div className="flex items-center justify-between p-5">
+                <div>
+                  <h3 className="text-base font-semibold">{c.name}</h3>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{c.tagline}</p>
+                </div>
+                <ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-1" />
               </div>
-              <span className="inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition group-hover:opacity-100">
-                Explore <ArrowRight className="h-4 w-4" />
-              </span>
             </Link>
           ))}
         </div>
