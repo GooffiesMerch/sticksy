@@ -52,6 +52,28 @@ function Index() {
   const { data: products } = useSuspenseQuery(productsQueryOptions);
   const [showAll, setShowAll] = useState(false);
   const visible = useMemo(() => (showAll ? products : products.slice(0, 8)), [products, showAll]);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const togglePlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setIsPlaying(true);
+    } else {
+      v.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
+  };
 
   return (
     <div className="min-h-screen bg-background">
