@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import { ArrowRight, Star, Sparkles, Truck, ShieldCheck, Send } from "lucide-react";
+import { ArrowRight, Star, Sparkles, Truck, ShieldCheck, Send, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
@@ -17,6 +18,7 @@ import heroImg from "@/assets/hero-porsche.webp.asset.json";
 import howto1 from "@/assets/howto-1.jpg";
 import howto2 from "@/assets/howto-2.jpg";
 import applied1 from "@/assets/applied-1.jpg";
+import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
 import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
 import review3 from "@/assets/review-3.jpg";
@@ -172,6 +174,29 @@ function Index() {
                 That's it — instant upgrade to any boring white AC unit.
               </p>
             </div>
+          </div>
+          <div className="mt-12 flex justify-center">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="lg" variant="default">
+                  <PlayCircle className="mr-2 h-5 w-5" /> See tutorial
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-3xl">
+                <DialogHeader>
+                  <DialogTitle>How to apply your AC sticker</DialogTitle>
+                </DialogHeader>
+                <div className="overflow-hidden rounded-lg bg-black">
+                  <video
+                    src={tutorialVideo.url}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="aspect-video w-full"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>
