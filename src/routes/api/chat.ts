@@ -29,15 +29,46 @@ export const Route = createFileRoute("/api/chat")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const { messages } = (await request.json()) as { messages?: unknown };
+        const MAX_BODY_BYTES = 64 * 1024; // 64KB total request body
+        const MAX_MESSAGES = 30;
+        const MAX_CHARS_PER_MESSAGE = 2000;
+
+        const contentLength = Number(request.headers.get("content-length") ?? 0);
+        if (contentLength && contentLength > MAX_BODY_BYTES) {
+          return new Response("Request body too large", { status: 413 });
+        }
+
+        const rawBody = await request.text();
+        if (rawBody.length > MAX_BODY_BYTES) {
+          return new Response("Request body too large", { status: 413 });
+        }
+
+        let parsed: { messages?: unknown };
+        try {
+          parsed = JSON.parse(rawBody);
+        } catch {
+          return new Response("Invalid JSON", { status: 400 });
+        }
+        const { messages } = parsed;
         if (!Array.isArray(messages)) {
           return new Response("Messages are required", { status: 400 });
+        }
+        if (messages.length > MAX_MESSAGES) {
+          return new Response("Too many messages", { status: 400 });
+        }
+        const tooLong = (messages as UIMessage[]).some((m) =>
+          m?.parts?.some((p) => p.type === "text" && typeof p.text === "string" && p.text.length > MAX_CHARS_PER_MESSAGE)
+        );
+        if (tooLong) {
+          return new Response("Message too long", { status: 400 });
         }
 
         const key = process.env.LOVABLE_API_KEY;
         if (!key) {
           return new Response("Missing LOVABLE_API_KEY", { status: 500 });
         }
+
+
 
         const gateway = createLovableAiGatewayProvider(key);
         const result = streamText({
