@@ -113,6 +113,21 @@ function ProductDetail() {
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
   const images = node.images.edges;
 
+  // Related products
+  const { data: relatedProducts } = useQuery({
+    queryKey: ["related-products"],
+    queryFn: () => fetchProducts(12),
+    staleTime: 5 * 60 * 1000,
+  });
+  const related = (relatedProducts ?? []).filter((p) => p.node.handle !== handle).slice(0, 4);
+
+  // Order timeline dates
+  const fmt = (d: Date) =>
+    d.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+  const today = new Date();
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const delivery = new Date(today); delivery.setDate(today.getDate() + 3);
+
   const handleAdd = async () => {
     if (!selectedVariant) return;
     await addItem({
