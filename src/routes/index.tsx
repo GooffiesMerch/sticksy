@@ -55,7 +55,10 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://sticksy.lovable.app/" },
     ],
-    links: [{ rel: "canonical", href: "https://sticksy.lovable.app/" }],
+    links: [
+      { rel: "canonical", href: "https://sticksy.lovable.app/" },
+      { rel: "preload", as: "image", href: heroImg.url, fetchpriority: "high" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
