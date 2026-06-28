@@ -13,6 +13,11 @@ import {
   Droplets,
   ShieldCheck,
   Info,
+  Palette,
+  Maximize2,
+  Printer,
+  Check,
+  X,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
