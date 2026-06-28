@@ -30,7 +30,8 @@ import {
 } from "@/components/ui/accordion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
+import { fetchProductByHandle, fetchProducts, formatPrice } from "@/lib/shopify";
+import { ProductCard } from "@/components/ProductCard";
 import { useCartStore } from "@/stores/cartStore";
 
 const productQueryOptions = (handle: string) =>
