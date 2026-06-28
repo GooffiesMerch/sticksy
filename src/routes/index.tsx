@@ -30,7 +30,7 @@ const productsQueryOptions = queryOptions({
 });
 
 const FAQ_ITEMS = [
-  { q: "Is it easy to apply at home?", a: "Yes. Every order ships with a squeegee and a step-by-step guide. Most customers finish applying in under 10 minutes — no tools or professional help needed." },
+  { q: "Will the sticker fit my AC?", a: "Our stickers are designed for standard 1 to 2 ton split AC indoor units. If you upload a custom design, we resize it to match your AC dimensions before printing." },
   { q: "Will the sticker damage my AC paint?", a: "No. We use premium removable vinyl that peels off cleanly without leaving residue, even after years of use." },
   { q: "How long does shipping take?", a: "Orders within Pakistan are delivered in 2–4 business days. International orders typically arrive in 7–14 business days." },
   { q: "Can I order a custom design?", a: "Absolutely. Use the Custom AC Sticker section above to upload your artwork. We'll review and print it on premium vinyl." },
