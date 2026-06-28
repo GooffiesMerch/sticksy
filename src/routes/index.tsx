@@ -29,6 +29,14 @@ const productsQueryOptions = queryOptions({
   queryFn: () => fetchProducts(100),
 });
 
+const FAQ_ITEMS = [
+  { q: "Is it easy to apply at home?", a: "Yes. Every order ships with a squeegee and a step-by-step guide. Most customers finish applying in under 10 minutes — no tools or professional help needed." },
+  { q: "Will the sticker damage my AC paint?", a: "No. We use premium removable vinyl that peels off cleanly without leaving residue, even after years of use." },
+  { q: "How long does shipping take?", a: "Orders within Pakistan are delivered in 2–4 business days. International orders typically arrive in 7–14 business days." },
+  { q: "Can I order a custom design?", a: "Absolutely. Use the Custom AC Sticker section above to upload your artwork. We'll review and print it on premium vinyl." },
+  { q: "What if the sticker arrives damaged?", a: "We offer a 30-day replacement guarantee. Just send us a photo at hello@sticksy.shop and we'll ship a fresh one — no questions asked." },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -36,12 +44,43 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Transform your air conditioner with premium vinyl stickers. Anime, cars, Marvel, football & custom designs. Easy to apply.",
+          "Transform your split AC with premium vinyl stickers. Shop anime, cars, Marvel and football designs, or upload your own custom artwork.",
       },
-      { property: "og:title", content: "Sticksy — Premium AC Stickers" },
+      { property: "og:title", content: "Sticksy — Premium AC Stickers & Custom Skins" },
       {
         property: "og:description",
-        content: "Premium AC stickers & custom skins. Easy to apply, made to last.",
+        content: "Premium vinyl AC stickers & custom skins. Easy to apply, made to last, shipped from Lahore.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://sticksy.lovable.app/" },
+    ],
+    links: [{ rel: "canonical", href: "https://sticksy.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Sticksy",
+          url: "https://sticksy.lovable.app",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://sticksy.lovable.app/?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((i) => ({
+            "@type": "Question",
+            name: i.q,
+            acceptedAnswer: { "@type": "Answer", text: i.a },
+          })),
+        }),
       },
     ],
   }),
