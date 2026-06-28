@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sticksy.lovable.app/sitemap.xml

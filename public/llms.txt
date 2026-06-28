@@ -1,0 +1,11 @@
+# Sticksy
+
+> Sticksy designs premium vinyl stickers and custom skins for split air conditioners — anime, cars, Marvel, football and your own artwork.
+
+## Pages
+
+- [Home](/): Shop premium AC stickers, browse collections, upload custom designs.
+- [Cars collection](/collections/cars): Supercars, race liveries and speed-themed AC stickers.
+- [Football collection](/collections/football): Football and matchday AC sticker designs.
+- [Anime collection](/collections/anime): Anime, manga and otaku icon AC stickers.
+- [Marvel & Heroes collection](/collections/marvel): Hero, villain and comic-themed AC stickers.
