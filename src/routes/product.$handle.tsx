@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import {
   ChevronLeft,
@@ -30,7 +30,8 @@ import {
 } from "@/components/ui/accordion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
+import { fetchProductByHandle, fetchProducts, formatPrice } from "@/lib/shopify";
+import { ProductCard } from "@/components/ProductCard";
 import { useCartStore } from "@/stores/cartStore";
 
 const productQueryOptions = (handle: string) =>
@@ -111,6 +112,21 @@ function ProductDetail() {
 
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
   const images = node.images.edges;
+
+  // Related products
+  const { data: relatedProducts } = useQuery({
+    queryKey: ["related-products"],
+    queryFn: () => fetchProducts(12),
+    staleTime: 5 * 60 * 1000,
+  });
+  const related = (relatedProducts ?? []).filter((p) => p.node.handle !== handle).slice(0, 4);
+
+  // Order timeline dates
+  const fmt = (d: Date) =>
+    d.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+  const today = new Date();
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const delivery = new Date(today); delivery.setDate(today.getDate() + 3);
 
   const handleAdd = async () => {
     if (!selectedVariant) return;
@@ -290,16 +306,16 @@ function ProductDetail() {
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {[
-              { icon: PackageCheck, title: "Order placed", desc: "We confirm your design and AC size right away." },
-              { icon: Truck, title: "Dispatched", desc: "Carefully packed and shipped within 24–48 hours." },
-              { icon: HomeIcon, title: "Delivered", desc: "Arrives in 2–4 days across Pakistan, ready to apply." },
+              { icon: PackageCheck, date: fmt(today), title: "Order placed", desc: "We confirm your design and AC size right away." },
+              { icon: Truck, date: fmt(tomorrow), title: "Order dispatches", desc: "Carefully packed and shipped within 24–48 hours." },
+              { icon: HomeIcon, date: fmt(delivery), title: "Delivered!", desc: "Arrives at your door, ready to apply." },
             ].map((step, i) => (
               <div key={step.title} className="relative rounded-xl border bg-card p-6 text-center">
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <step.icon className="h-5 w-5" />
                 </div>
-                <div className="mt-3 text-xs font-medium text-muted-foreground">
-                  Step {i + 1}
+                <div className="mt-3 text-xs font-medium text-primary">
+                  {i + 1}. {step.date}
                 </div>
                 <h3 className="mt-1 font-semibold">{step.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{step.desc}</p>
@@ -510,6 +526,20 @@ function ProductDetail() {
             </AccordionItem>
           </Accordion>
         </section>
+
+        {/* You may also like */}
+        {related.length > 0 && (
+          <section className="mt-20">
+            <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight">
+              You may also like
+            </h2>
+            <div className="mt-8 grid gap-4 sm:gap-6 grid-cols-2 lg:grid-cols-4">
+              {related.map((p) => (
+                <ProductCard key={p.node.id} product={p} />
+              ))}
+            </div>
+          </section>
+        )}
       </main>
       <Footer />
     </div>
