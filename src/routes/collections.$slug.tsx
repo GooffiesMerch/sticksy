@@ -17,13 +17,34 @@ export const Route = createFileRoute("/collections/$slug")({
   head: ({ params }) => {
     const c = getCollection(params.slug);
     const title = c ? `${c.name} AC Stickers — Sticksy` : "Collection — Sticksy";
+    const description = c
+      ? `Shop our ${c.name} AC sticker collection at Sticksy — ${c.tagline} Premium vinyl, easy to apply, shipped worldwide.`
+      : "Shop AC stickers by collection at Sticksy — premium vinyl, easy to apply, shipped worldwide.";
+    const url = `https://sticksy.lovable.app/collections/${params.slug}`;
     return {
       meta: [
         { title },
-        { name: "description", content: c?.tagline ?? "Shop AC stickers by collection." },
+        { name: "description", content: description },
         { property: "og:title", content: title },
-        { property: "og:description", content: c?.tagline ?? "Shop AC stickers by collection." },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
       ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: c
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                name: `${c.name} AC Stickers`,
+                description,
+                url,
+              }),
+            },
+          ]
+        : [],
     };
   },
   loader: async ({ context, params }) => {
