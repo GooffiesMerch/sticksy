@@ -306,16 +306,16 @@ function ProductDetail() {
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {[
-              { icon: PackageCheck, title: "Order placed", desc: "We confirm your design and AC size right away." },
-              { icon: Truck, title: "Dispatched", desc: "Carefully packed and shipped within 24–48 hours." },
-              { icon: HomeIcon, title: "Delivered", desc: "Arrives in 2–4 days across Pakistan, ready to apply." },
+              { icon: PackageCheck, date: fmt(today), title: "Order placed", desc: "We confirm your design and AC size right away." },
+              { icon: Truck, date: fmt(tomorrow), title: "Order dispatches", desc: "Carefully packed and shipped within 24–48 hours." },
+              { icon: HomeIcon, date: fmt(delivery), title: "Delivered!", desc: "Arrives at your door, ready to apply." },
             ].map((step, i) => (
               <div key={step.title} className="relative rounded-xl border bg-card p-6 text-center">
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <step.icon className="h-5 w-5" />
                 </div>
-                <div className="mt-3 text-xs font-medium text-muted-foreground">
-                  Step {i + 1}
+                <div className="mt-3 text-xs font-medium text-primary">
+                  {i + 1}. {step.date}
                 </div>
                 <h3 className="mt-1 font-semibold">{step.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{step.desc}</p>
