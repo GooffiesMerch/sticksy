@@ -308,6 +308,166 @@ function ProductDetail() {
           </div>
         </section>
 
+        {/* Art that captivates */}
+        <section className="mt-20">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+                Art that captivates and inspires.
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                Why the {node.title} stands out.
+              </p>
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                {[
+                  {
+                    icon: ShieldCheck,
+                    title: "Premium Vinyl Quality",
+                    desc: "Crafted with high-grade matte vinyl that resists fading, scratches, and humidity.",
+                  },
+                  {
+                    icon: Maximize2,
+                    title: "Custom-fit Sizing",
+                    desc: "Resized to match your exact AC dimensions for a clean, edge-to-edge finish.",
+                  },
+                  {
+                    icon: Printer,
+                    title: "Exceptional Print Fidelity",
+                    desc: "Top-tier pigmented inks deliver stunning clarity and rich, true-to-design colors.",
+                  },
+                  {
+                    icon: HomeIcon,
+                    title: "Indoor Use Only",
+                    desc: "Designed specifically for indoor split AC units to enhance any living space.",
+                  },
+                ].map((f) => (
+                  <div key={f.title} className="flex gap-3">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <f.icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{f.title}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                        {f.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
+                {images[0]?.node && (
+                  <img
+                    src={images[0].node.url}
+                    alt={images[0].node.altText ?? node.title}
+                    className="h-full w-full object-cover"
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Transform decor — stat bars */}
+        <section className="mt-20 rounded-2xl border bg-card p-8 sm:p-12">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 className="text-3xl font-semibold tracking-tight">
+                Transform Your Decor with Art
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                A sticker can redefine your space and express your personality.
+              </p>
+            </div>
+            <div className="space-y-5">
+              {[
+                { pct: 95, label: "Enhances your decor with vibrant art." },
+                { pct: 92, label: "Delivers exceptional print quality." },
+                { pct: 89, label: "Perfect for any indoor space." },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="font-medium">{s.label}</span>
+                    <span className="font-semibold text-primary">{s.pct}%</span>
+                  </div>
+                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-muted">
+                    <div
+                      className="h-full rounded-full bg-primary"
+                      style={{ width: `${s.pct}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Comparison */}
+        <section className="mt-20">
+          <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight">
+            What sets the {node.title} apart
+          </h2>
+          <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
+            Premium matte vinyl, custom-fit sizing, and pigmented inks — built to look
+            stunning on any indoor split AC.
+          </p>
+          <div className="mt-8 overflow-hidden rounded-2xl border">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr>
+                  <th className="px-4 py-4 text-left font-medium"></th>
+                  <th className="px-4 py-4 text-center font-semibold text-primary">
+                    {node.title}
+                  </th>
+                  <th className="px-4 py-4 text-center font-medium text-muted-foreground">
+                    Others
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  "Premium matte vinyl",
+                  "Pigmented archival inks",
+                  "Custom-fit sizing",
+                  "Vibrant color reproduction",
+                  "Removable — no residue",
+                  "Designed for indoor AC use",
+                ].map((row, i) => (
+                  <tr key={row} className={i % 2 === 0 ? "bg-background" : "bg-muted/20"}>
+                    <td className="px-4 py-3.5 font-medium">{row}</td>
+                    <td className="px-4 py-3.5 text-center">
+                      <Check className="mx-auto h-5 w-5 text-primary" />
+                    </td>
+                    <td className="px-4 py-3.5 text-center">
+                      <X className="mx-auto h-5 w-5 text-muted-foreground/50" />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-6 text-center">
+            <Button size="lg" onClick={handleAdd} disabled={isLoading || !selectedVariant?.availableForSale}>
+              Try the {node.title.split(" ").slice(0, 3).join(" ")}
+            </Button>
+          </div>
+        </section>
+
+        {/* Reviews — empty state (no fabricated reviews) */}
+        <section className="mt-20">
+          <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight">
+            What customers say about the {node.title}
+          </h2>
+          <div className="mt-8 rounded-2xl border bg-card p-10 text-center">
+            <Palette className="mx-auto h-10 w-10 text-muted-foreground/50" />
+            <p className="mt-4 font-medium">No reviews yet</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Be the first to share your experience with this design.
+            </p>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="mt-16 mx-auto max-w-3xl">
           <h2 className="text-center text-2xl font-semibold tracking-tight">
