@@ -526,6 +526,20 @@ function ProductDetail() {
             </AccordionItem>
           </Accordion>
         </section>
+
+        {/* You may also like */}
+        {related.length > 0 && (
+          <section className="mt-20">
+            <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight">
+              You may also like
+            </h2>
+            <div className="mt-8 grid gap-4 sm:gap-6 grid-cols-2 lg:grid-cols-4">
+              {related.map((p) => (
+                <ProductCard key={p.node.id} product={p} />
+              ))}
+            </div>
+          </section>
+        )}
       </main>
       <Footer />
     </div>
