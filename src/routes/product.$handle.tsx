@@ -123,7 +123,7 @@ function ProductDetail() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+      <main className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
         <Link
           to="/"
           className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
@@ -131,9 +131,10 @@ function ProductDetail() {
           <ChevronLeft className="h-4 w-4" /> Back to shop
         </Link>
 
-        <div className="mt-6 grid gap-10 lg:grid-cols-2">
+        <div className="mt-6 grid gap-8 lg:gap-12 lg:grid-cols-2">
+          {/* GALLERY */}
           <div className="flex flex-col gap-3">
-            <div className="aspect-square overflow-hidden rounded-lg bg-muted">
+            <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
               {images[selectedImageIdx]?.node ? (
                 <img
                   src={images[selectedImageIdx].node.url}
@@ -148,7 +149,7 @@ function ProductDetail() {
                   <button
                     key={img.node.url}
                     onClick={() => setSelectedImageIdx(i)}
-                    className={`h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border-2 transition-colors ${
+                    className={`h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 overflow-hidden rounded-md border-2 transition-colors ${
                       i === selectedImageIdx ? "border-primary" : "border-transparent"
                     }`}
                   >
@@ -163,10 +164,17 @@ function ProductDetail() {
             )}
           </div>
 
+          {/* DETAILS */}
           <div className="flex flex-col gap-6">
             <div>
-              <h1 className="text-3xl font-semibold tracking-tight">{node.title}</h1>
-              <p className="mt-2 text-2xl">
+              <Badge variant="secondary" className="mb-3 gap-1.5">
+                <Heart className="h-3.5 w-3.5 fill-current text-rose-500" />
+                Loved by happy customers
+              </Badge>
+              <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+                {node.title}
+              </h1>
+              <p className="mt-3 text-3xl font-semibold">
                 {selectedVariant
                   ? formatPrice(selectedVariant.price.amount, selectedVariant.price.currencyCode)
                   : formatPrice(
@@ -174,7 +182,23 @@ function ProductDetail() {
                       node.priceRange.minVariantPrice.currencyCode,
                     )}
               </p>
+              <p className="mt-1 text-sm text-muted-foreground">Tax included. Shipping calculated at checkout.</p>
             </div>
+
+            {/* Feature bullets */}
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+              {[
+                { icon: Sparkles, text: "Premium matte vinyl finish" },
+                { icon: Droplets, text: "Waterproof & fade-resistant" },
+                { icon: ShieldCheck, text: "Removable — no paint damage" },
+                { icon: Ruler, text: "Fits standard 1–2 ton split ACs" },
+              ].map(({ icon: Icon, text }) => (
+                <li key={text} className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-primary" />
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
 
             {variants.length > 1 && (
               <div className="flex flex-col gap-2">
@@ -200,6 +224,7 @@ function ProductDetail() {
 
             <Button
               size="lg"
+              className="h-12 text-base"
               onClick={handleAdd}
               disabled={isLoading || !selectedVariant?.availableForSale}
             >
@@ -211,6 +236,34 @@ function ProductDetail() {
                 "Add to cart"
               )}
             </Button>
+
+            {/* Info blocks */}
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="rounded-lg border bg-card p-4">
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <PackageCheck className="h-4 w-4 text-primary" /> What's included
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                  1 custom-cut AC sticker, application squeegee, and step-by-step guide.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-card p-4">
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <Droplets className="h-4 w-4 text-primary" /> Care instructions
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                  Wipe with a soft damp cloth. Avoid harsh chemicals or abrasive scrubs.
+                </p>
+              </div>
+              <div className="rounded-lg border bg-card p-4">
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <Info className="h-4 w-4 text-primary" /> Note
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                  We resize each sticker to fit your AC. Just share dimensions after ordering.
+                </p>
+              </div>
+            </div>
 
             {node.description && (
               <div className="prose prose-sm max-w-none">
@@ -224,7 +277,76 @@ function ProductDetail() {
             )}
           </div>
         </div>
+
+        {/* Order timeline */}
+        <section className="mt-16">
+          <h2 className="text-center text-2xl font-semibold tracking-tight">
+            From order to your wall
+          </h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            {[
+              { icon: PackageCheck, title: "Order placed", desc: "We confirm your design and AC size right away." },
+              { icon: Truck, title: "Dispatched", desc: "Carefully packed and shipped within 24–48 hours." },
+              { icon: HomeIcon, title: "Delivered", desc: "Arrives in 2–4 days across Pakistan, ready to apply." },
+            ].map((step, i) => (
+              <div key={step.title} className="relative rounded-xl border bg-card p-6 text-center">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <step.icon className="h-5 w-5" />
+                </div>
+                <div className="mt-3 text-xs font-medium text-muted-foreground">
+                  Step {i + 1}
+                </div>
+                <h3 className="mt-1 font-semibold">{step.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-16 mx-auto max-w-3xl">
+          <h2 className="text-center text-2xl font-semibold tracking-tight">
+            Frequently asked questions
+          </h2>
+          <Accordion type="single" collapsible className="mt-6">
+            <AccordionItem value="fit">
+              <AccordionTrigger>Will this sticker fit my AC?</AccordionTrigger>
+              <AccordionContent>
+                Our designs fit standard 1–2 ton split AC indoor units. For custom sizes, just
+                share your AC dimensions after ordering and we'll resize it for free.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="apply">
+              <AccordionTrigger>Is it easy to apply?</AccordionTrigger>
+              <AccordionContent>
+                Yes! Each order includes a squeegee and a simple guide. Most customers apply
+                it in under 10 minutes.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="damage">
+              <AccordionTrigger>Will it damage my AC paint?</AccordionTrigger>
+              <AccordionContent>
+                Not at all. We use premium removable vinyl that peels off cleanly without
+                leaving residue.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="shipping">
+              <AccordionTrigger>How long does shipping take?</AccordionTrigger>
+              <AccordionContent>
+                2–4 days across Pakistan, 7–14 days internationally.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="damaged">
+              <AccordionTrigger>What if my sticker arrives damaged?</AccordionTrigger>
+              <AccordionContent>
+                We offer a 30-day replacement guarantee. Just send us a photo and we'll ship
+                a fresh one.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </section>
       </main>
+      <Footer />
     </div>
   );
 }
