@@ -1,10 +1,30 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import { ChevronLeft, Loader2 } from "lucide-react";
+import {
+  ChevronLeft,
+  Loader2,
+  Heart,
+  PackageCheck,
+  Truck,
+  Home as HomeIcon,
+  Sparkles,
+  Ruler,
+  Droplets,
+  ShieldCheck,
+  Info,
+} from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { fetchProductByHandle, formatPrice } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 
