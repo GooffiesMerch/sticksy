@@ -160,6 +160,8 @@ function Index() {
               alt="Air conditioner with custom anime sticker in a modern living room"
               width={1600}
               height={1024}
+              fetchPriority="high"
+              decoding="async"
               className="aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl"
             />
           </div>
