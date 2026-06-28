@@ -51,12 +51,55 @@ const productQueryOptions = (handle: string) =>
 export const Route = createFileRoute("/product/$handle")({
   loader: ({ context, params }) =>
     context.queryClient.ensureQueryData(productQueryOptions(params.handle)),
-  head: ({ params }) => ({
-    meta: [
-      { title: `${params.handle} — Shop` },
-      { name: "description", content: `Product details for ${params.handle}.` },
-    ],
-  }),
+  head: ({ params, loaderData }) => {
+    const node = loaderData?.node;
+    const title = node ? `${node.title} — Sticksy` : "Product — Sticksy";
+    const rawDesc = node?.description?.trim() || "";
+    const fallback = node
+      ? `Shop the ${node.title} premium vinyl AC sticker from Sticksy. Easy to apply, made to last, shipped fast across Pakistan and worldwide.`
+      : "Premium vinyl AC stickers from Sticksy — easy to apply, made to last.";
+    const description = (rawDesc.length >= 50 ? rawDesc : fallback).slice(0, 300);
+    const url = `https://sticksy.lovable.app/product/${params.handle}`;
+    const image = node?.images?.edges?.[0]?.node?.url;
+    const price = node?.priceRange?.minVariantPrice;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "product" },
+        { property: "og:url", content: url },
+        ...(image ? [{ property: "og:image", content: image }, { name: "twitter:image", content: image }] : []),
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: node
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: node.title,
+                description: rawDesc || fallback,
+                image: node.images.edges.map((e) => e.node.url),
+                url,
+                offers: price
+                  ? {
+                      "@type": "Offer",
+                      price: price.amount,
+                      priceCurrency: price.currencyCode,
+                      availability: "https://schema.org/InStock",
+                      url,
+                    }
+                  : undefined,
+              }),
+            },
+          ]
+        : [],
+    };
+  },
   component: ProductDetail,
   notFoundComponent: ProductNotFound,
   errorComponent: ProductError,
