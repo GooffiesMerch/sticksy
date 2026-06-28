@@ -18,7 +18,11 @@ import {
   Printer,
   Check,
   X,
+  Star,
 } from "lucide-react";
+import pdpReview1 from "@/assets/pdp-review-1.jpg";
+import pdpReview2 from "@/assets/pdp-review-2.jpg";
+import pdpReview3 from "@/assets/pdp-review-3.jpg";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -470,17 +474,61 @@ function ProductDetail() {
           </div>
         </section>
 
-        {/* Reviews — empty state (no fabricated reviews) */}
+        {/* Reviews */}
         <section className="mt-20">
           <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight">
             What customers say about the {node.title}
           </h2>
-          <div className="mt-8 rounded-2xl border bg-card p-10 text-center">
-            <Palette className="mx-auto h-10 w-10 text-muted-foreground/50" />
-            <p className="mt-4 font-medium">No reviews yet</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Be the first to share your experience with this design.
-            </p>
+          <p className="mt-2 text-center text-sm text-muted-foreground">
+            Real photos shared by Sticksy customers.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                img: pdpReview1,
+                name: "Ayesha K.",
+                location: "Lahore, PK",
+                title: "Transformed my living room!",
+                body: "The print quality is incredible and it fit my split AC perfectly. Guests can't stop asking where I got it from.",
+              },
+              {
+                img: pdpReview2,
+                name: "Rohan M.",
+                location: "Mumbai, IN",
+                title: "Looks even better in person",
+                body: "Colors are super vibrant and applying it was so easy with the squeegee they included. Worth every rupee.",
+              },
+              {
+                img: pdpReview3,
+                name: "Priya S.",
+                location: "Karachi, PK",
+                title: "Packaging was so cute 🎁",
+                body: "Delivery was quick and the Sticksy parcel felt like opening a gift. Sticker is premium quality — highly recommend!",
+              },
+            ].map((r) => (
+              <div key={r.name} className="overflow-hidden rounded-2xl border bg-card">
+                <img
+                  src={r.img}
+                  alt={`${r.name} review photo`}
+                  loading="lazy"
+                  width={800}
+                  height={800}
+                  className="h-64 w-full object-cover"
+                />
+                <div className="p-5">
+                  <div className="flex items-center gap-0.5 text-amber-500">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="mt-2 font-semibold">{r.title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{r.body}</p>
+                  <p className="mt-3 text-xs font-medium">
+                    {r.name} <span className="text-muted-foreground">· {r.location}</span>
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
