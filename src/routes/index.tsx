@@ -55,7 +55,10 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://sticksy.lovable.app/" },
     ],
-    links: [{ rel: "canonical", href: "https://sticksy.lovable.app/" }],
+    links: [
+      { rel: "canonical", href: "https://sticksy.lovable.app/" },
+      { rel: "preload", as: "image", href: heroImg.url, fetchpriority: "high" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -157,6 +160,8 @@ function Index() {
               alt="Air conditioner with custom anime sticker in a modern living room"
               width={1600}
               height={1024}
+              fetchPriority="high"
+              decoding="async"
               className="aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl"
             />
           </div>
