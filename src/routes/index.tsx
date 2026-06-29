@@ -170,6 +170,42 @@ function Index() {
         </div>
       </section>
 
+      {/* PRINTED IN STUDIO */}
+      <section className="bg-muted/40 py-16">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 md:items-center">
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-2xl" />
+            <img
+              src={hostedAssetUrl(printerImg.url)}
+              alt="Wide-format UV printer producing fresh vinyl sticker artwork in our studio"
+              width={1600}
+              height={1024}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[16/10] w-full rounded-3xl object-cover shadow-xl"
+            />
+          </div>
+          <div className="space-y-5">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+              <Sparkles className="h-3.5 w-3.5" /> Printed in-house
+            </span>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Made fresh in our Lahore studio
+            </h2>
+            <p className="text-muted-foreground">
+              Every sticker is printed to order on premium UV-cured vinyl using our wide-format
+              machine. No middlemen, no warehouse stock — just sharp colours and crisp detail
+              made the day your order comes in.
+            </p>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-start gap-2"><ShieldCheck className="mt-0.5 h-4 w-4 text-primary" /> Fade-resistant UV ink, built to survive Pakistani summers</li>
+              <li className="flex items-start gap-2"><ShieldCheck className="mt-0.5 h-4 w-4 text-primary" /> Premium removable vinyl — peels clean, no residue</li>
+              <li className="flex items-start gap-2"><ShieldCheck className="mt-0.5 h-4 w-4 text-primary" /> Sized to your exact AC dimensions before printing</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* PRODUCTS */}
       <section id="products" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
