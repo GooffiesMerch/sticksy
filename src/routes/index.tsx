@@ -176,13 +176,16 @@ function Index() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 md:items-center">
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-2xl" />
-            <img
-              src={hostedAssetUrl(printerImg.url)}
-              alt="Wide-format UV printer producing fresh vinyl sticker artwork in our studio"
+            <video
+              src={hostedAssetUrl(printerVideo.url)}
+              poster={hostedAssetUrl(printerImg.url)}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
               width={1600}
               height={1024}
-              loading="lazy"
-              decoding="async"
               className="aspect-[16/10] w-full rounded-3xl object-cover shadow-xl"
             />
           </div>
