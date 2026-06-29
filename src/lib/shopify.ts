@@ -127,12 +127,17 @@ export async function fetchProductByHandle(handle: string): Promise<ShopifyProdu
 }
 
 export function formatPrice(amount: string, currencyCode: string) {
+  const value = parseFloat(amount);
   try {
-    return new Intl.NumberFormat(undefined, { style: "currency", currency: currencyCode }).format(
-      parseFloat(amount),
-    );
+    return new Intl.NumberFormat("en-PK", {
+      style: "currency",
+      currency: currencyCode,
+      currencyDisplay: "code",
+      minimumFractionDigits: Number.isInteger(value) ? 0 : 2,
+      maximumFractionDigits: Number.isInteger(value) ? 0 : 2,
+    }).format(value);
   } catch {
-    return `${currencyCode} ${parseFloat(amount).toFixed(2)}`;
+    return `${currencyCode} ${Number.isInteger(value) ? value.toFixed(0) : value.toFixed(2)}`;
   }
 }
 
