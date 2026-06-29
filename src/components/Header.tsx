@@ -5,6 +5,7 @@ import { CartDrawer } from "./CartDrawer";
 import { COLLECTIONS } from "@/lib/collections";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { hostedAssetUrl } from "@/lib/deployment";
 import logo from "@/assets/sticksy-logo.png.asset.json";
 
 export function Header() {
@@ -15,7 +16,7 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Sticksy home">
           <img
-            src={logo.url}
+            src={hostedAssetUrl(logo.url)}
             alt="Sticksy"
             width={140}
             height={48}

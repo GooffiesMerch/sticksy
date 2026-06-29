@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { COLLECTIONS } from "@/lib/collections";
+import { hostedAssetUrl } from "@/lib/deployment";
 import logo from "@/assets/sticksy-logo.png.asset.json";
 
 export function Footer() {
@@ -9,7 +10,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
         <div className="space-y-3">
           <img
-            src={logo.url}
+            src={hostedAssetUrl(logo.url)}
             alt="Sticksy"
             width={180}
             height={80}

@@ -13,6 +13,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { CustomStickerSection } from "@/components/CustomStickerSection";
 import { fetchProducts } from "@/lib/shopify";
 import { COLLECTIONS } from "@/lib/collections";
+import { hostedAssetUrl } from "@/lib/deployment";
 import { toast } from "sonner";
 
 import heroImg from "@/assets/hero-porsche.webp.asset.json";
@@ -57,7 +58,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://sticksy.lovable.app/" },
-      { rel: "preload", as: "image", href: heroImg.url, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: hostedAssetUrl(heroImg.url), fetchpriority: "high" },
     ],
     scripts: [
       {
@@ -156,7 +157,7 @@ function Index() {
           <div className="relative">
             <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-2xl" />
             <img
-              src={heroImg.url}
+              src={hostedAssetUrl(heroImg.url)}
               alt="Air conditioner with custom anime sticker in a modern living room"
               width={1600}
               height={1024}
@@ -260,7 +261,7 @@ function Index() {
                 <div className="overflow-hidden rounded-lg bg-black">
                   <video
                     ref={videoRef}
-                    src={tutorialVideo.url}
+                    src={hostedAssetUrl(tutorialVideo.url)}
                     controls
                     autoPlay
                     playsInline

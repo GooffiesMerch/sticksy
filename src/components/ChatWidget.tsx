@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { MessageCircle, Send, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { chatApiUrl } from "@/lib/deployment";
 
 const STORAGE_KEY = "sticksy-chat-messages-v1";
 
@@ -20,7 +21,7 @@ function loadMessages(): UIMessage[] {
   }
 }
 
-const transport = new DefaultChatTransport({ api: "/api/chat" });
+const transport = new DefaultChatTransport({ api: chatApiUrl() });
 
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
