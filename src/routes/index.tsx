@@ -24,6 +24,7 @@ import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
 import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
 import review3 from "@/assets/review-3.jpg";
+import printerImg from "@/assets/printer-studio.jpg.asset.json";
 
 const productsQueryOptions = queryOptions({
   queryKey: ["products"],
