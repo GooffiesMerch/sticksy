@@ -104,19 +104,20 @@ export function CustomStickerSection() {
             <h3 className="text-lg font-semibold">Preview & Add to Cart</h3>
             <div className="relative mt-3 aspect-video w-full overflow-hidden rounded-lg bg-white">
               <img src={acMockup} alt="AC mockup" className="absolute inset-0 h-full w-full object-cover" />
-              {preview ? (
+              {preview && (
                 <img
                   src={preview}
                   alt="Your sticker on AC"
                   className="absolute object-cover"
                   style={{ left: "7%", top: "6%", width: "86%", height: "66%" }}
                 />
-              ) : (
-                <p className="absolute inset-x-0 bottom-3 px-4 text-center text-xs text-muted-foreground">
-                  Upload artwork to preview it on the AC.
-                </p>
               )}
             </div>
+            {!preview && (
+              <p className="mt-2 text-center text-xs text-muted-foreground">
+                Upload artwork to preview it on the AC.
+              </p>
+            )}
             <Button className="mt-6" onClick={handleAdd} disabled={!preview || busy}>
               {busy ? "Adding..." : "Add to cart"}
             </Button>
