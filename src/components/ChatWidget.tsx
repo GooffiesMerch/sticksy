@@ -21,12 +21,11 @@ function loadMessages(): UIMessage[] {
   }
 }
 
-const transport = new DefaultChatTransport({ api: chatApiUrl() });
-
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [initial] = useState<UIMessage[]>(() => loadMessages());
+  const [transport] = useState(() => new DefaultChatTransport({ api: chatApiUrl() }));
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
