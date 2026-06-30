@@ -1,17 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useMemo, useRef, useState } from "react";
 import { ArrowRight, Star, Sparkles, Truck, ShieldCheck, Send, PlayCircle, Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
-import { CustomStickerSection } from "@/components/CustomStickerSection";
+const CustomStickerSection = lazy(() =>
+  import("@/components/CustomStickerSection").then((m) => ({ default: m.CustomStickerSection })),
+);
 import { fetchProducts } from "@/lib/shopify";
+import { COLLECTIONS } from "@/lib/collections";
+import { hostedAssetUrl } from "@/lib/deployment";
+import { toast } from "sonner";
 import { COLLECTIONS } from "@/lib/collections";
 import { hostedAssetUrl } from "@/lib/deployment";
 import { toast } from "sonner";
