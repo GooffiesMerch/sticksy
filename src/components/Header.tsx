@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { COLLECTIONS } from "@/lib/collections";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
@@ -44,6 +44,11 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1">
+          <Button variant="ghost" size="icon" asChild aria-label="Search">
+            <Link to="/search">
+              <Search className="h-5 w-5" />
+            </Link>
+          </Button>
           <CartDrawer />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -67,6 +72,13 @@ export function Header() {
                   className="rounded-md px-3 py-2 hover:bg-muted"
                 >
                   Shop
+                </Link>
+                <Link
+                  to="/search"
+                  onClick={() => setOpen(false)}
+                  className="rounded-md px-3 py-2 hover:bg-muted"
+                >
+                  Search
                 </Link>
                 {COLLECTIONS.map((c) => (
                   <Link
