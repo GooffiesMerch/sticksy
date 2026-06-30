@@ -629,7 +629,7 @@ function ProductDetail() {
         </section>
 
         {/* You may also like */}
-        {related.length > 0 && (
+        {!isStandalone && related.length > 0 && (
           <section className="mt-20">
             <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight">
               You may also like
@@ -642,7 +642,7 @@ function ProductDetail() {
           </section>
         )}
       </main>
-      <Footer />
+      {!isStandalone && <Footer />}
     </div>
   );
 }
