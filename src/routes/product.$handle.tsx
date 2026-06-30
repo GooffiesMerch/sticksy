@@ -168,6 +168,7 @@ function ProductDetail() {
   );
 
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const images = node.images.edges;
 
   // Related products
