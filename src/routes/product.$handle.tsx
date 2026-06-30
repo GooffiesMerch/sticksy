@@ -312,13 +312,7 @@ function ProductDetail() {
             body: "Our tank sits in direct sun on the roof and used to give scalding water by afternoon. With this cover the water stays genuinely cool — perfect for bath after work and for filling bottles before my daily commute. Game changer in June.",
           },
         ],
-        faqs: [
-          { q: "Will this fit my plastic water tank?", a: "Yes — we make sizes for 400L, 500L, 800L, 1000L, 1200L and larger plastic tanks. Pick the closest size to yours; the adjustable straps handle small differences in shape." },
-          { q: "Does it really keep the water cool?", a: "Yes. The multi-layer insulated shell reflects sunlight and slows heat transfer, so stored water stays noticeably cooler — especially during Pakistan's summer." },
-          { q: "Will it stop algae inside the tank?", a: "By blocking direct sunlight from hitting the tank walls, the cover dramatically reduces algae and bacterial growth that thrive in sunlit water." },
-          { q: "Is it hard to install?", a: "Not at all. Wrap it around your tank, fasten the adjustable straps, and you're done — most people fit it in under 10 minutes." },
-          { q: "How long does shipping take?", a: "2–4 days across Pakistan. We dispatch within 24–48 hours of your order." },
-        ],
+        faqs: TANK_FAQS,
         ctaShort: "Get the cover",
       }
     : {
