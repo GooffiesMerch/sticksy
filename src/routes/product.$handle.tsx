@@ -60,6 +60,24 @@ const productQueryOptions = (handle: string) =>
     },
   });
 
+const WATER_TANK_HANDLE = "insulated-water-tank-cover-for-plastic-tanks";
+
+const TANK_FAQS = [
+  { q: "Will this fit my plastic water tank?", a: "Yes — we make sizes for 400L, 500L, 800L, 1000L, 1200L and larger plastic tanks. Pick the closest size to yours; the adjustable straps handle small differences in shape." },
+  { q: "Does it really keep the water cool?", a: "Yes. The multi-layer insulated shell reflects sunlight and slows heat transfer, so stored water stays noticeably cooler — especially during Pakistan's summer." },
+  { q: "Will it stop algae inside the tank?", a: "By blocking direct sunlight from hitting the tank walls, the cover dramatically reduces algae and bacterial growth that thrive in sunlit water." },
+  { q: "Is it hard to install?", a: "Not at all. Wrap it around your tank, fasten the adjustable straps, and you're done — most people fit it in under 10 minutes." },
+  { q: "How long does shipping take?", a: "2–4 days across Pakistan. We dispatch within 24–48 hours of your order." },
+];
+
+const STICKER_FAQS = [
+  { q: "Will this sticker fit my AC?", a: "Our designs fit standard 1–2 ton split AC indoor units. For custom sizes, just share your AC dimensions after ordering and we'll resize it for free." },
+  { q: "Is it easy to apply?", a: "Yes! Each order includes a squeegee and a simple guide. Most customers apply it in under 10 minutes." },
+  { q: "Will it damage my AC paint?", a: "Not at all. We use premium removable vinyl that peels off cleanly without leaving residue." },
+  { q: "How long does shipping take?", a: "2–4 days across Pakistan, 7–14 days internationally." },
+  { q: "What if my sticker arrives damaged?", a: "We offer a 30-day replacement guarantee. Just send us a photo and we'll ship a fresh one." },
+];
+
 export const Route = createFileRoute("/product/$handle")({
   loader: ({ context, params }) =>
     context.queryClient.ensureQueryData(productQueryOptions(params.handle)),
