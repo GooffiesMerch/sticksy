@@ -197,6 +197,24 @@ function ProductDetail() {
     toast.success(`${node.title} added to cart`, { position: "top-center" });
   };
 
+  const handleBuyNow = async () => {
+    if (!selectedVariant) return;
+    await addItem({
+      product,
+      variantId: selectedVariant.id,
+      variantTitle: selectedVariant.title,
+      price: selectedVariant.price,
+      quantity: 1,
+      selectedOptions: selectedVariant.selectedOptions ?? [],
+    });
+    const url = useCartStore.getState().getCheckoutUrl();
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      toast.error("Could not start checkout. Please try again.", { position: "top-center" });
+    }
+  };
+
   const isStandalone = STANDALONE_HANDLES.has(handle);
   const isWaterTank = handle === "insulated-water-tank-cover-for-plastic-tanks";
 
@@ -333,7 +351,7 @@ function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      {!isStandalone && <Header />}
+      <Header />
       <main className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
         {!isStandalone && (
           <Link
@@ -430,20 +448,31 @@ function ProductDetail() {
               </div>
             )}
 
-            <Button
-              size="lg"
-              className="h-12 text-base"
-              onClick={handleAdd}
-              disabled={isLoading || !selectedVariant?.availableForSale}
-            >
-              {isLoading ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : !selectedVariant?.availableForSale ? (
-                "Sold out"
-              ) : (
-                "Add to cart"
-              )}
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-12 text-base sm:flex-1"
+                onClick={handleAdd}
+                disabled={isLoading || !selectedVariant?.availableForSale}
+              >
+                {isLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : !selectedVariant?.availableForSale ? (
+                  "Sold out"
+                ) : (
+                  "Add to cart"
+                )}
+              </Button>
+              <Button
+                size="lg"
+                className="h-12 text-base sm:flex-1"
+                onClick={handleBuyNow}
+                disabled={isLoading || !selectedVariant?.availableForSale}
+              >
+                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Buy now"}
+              </Button>
+            </div>
 
             {/* Info blocks */}
             <div className="grid gap-3 sm:grid-cols-3">
