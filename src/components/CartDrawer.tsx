@@ -100,6 +100,7 @@ export const CartDrawer = () => {
                           size="icon"
                           className="h-6 w-6"
                           onClick={() => removeItem(item.variantId)}
+                          aria-label={`Remove ${item.product.node.title} from cart`}
                         >
                           <Trash2 className="h-3 w-3" />
                         </Button>
@@ -109,6 +110,7 @@ export const CartDrawer = () => {
                             size="icon"
                             className="h-6 w-6"
                             onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
+                            aria-label={`Decrease quantity of ${item.product.node.title}`}
                           >
                             <Minus className="h-3 w-3" />
                           </Button>
@@ -118,6 +120,7 @@ export const CartDrawer = () => {
                             size="icon"
                             className="h-6 w-6"
                             onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
+                            aria-label={`Increase quantity of ${item.product.node.title}`}
                           >
                             <Plus className="h-3 w-3" />
                           </Button>
