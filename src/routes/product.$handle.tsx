@@ -197,6 +197,24 @@ function ProductDetail() {
     toast.success(`${node.title} added to cart`, { position: "top-center" });
   };
 
+  const handleBuyNow = async () => {
+    if (!selectedVariant) return;
+    await addItem({
+      product,
+      variantId: selectedVariant.id,
+      variantTitle: selectedVariant.title,
+      price: selectedVariant.price,
+      quantity: 1,
+      selectedOptions: selectedVariant.selectedOptions ?? [],
+    });
+    const url = useCartStore.getState().getCheckoutUrl();
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      toast.error("Could not start checkout. Please try again.", { position: "top-center" });
+    }
+  };
+
   const isStandalone = STANDALONE_HANDLES.has(handle);
   const isWaterTank = handle === "insulated-water-tank-cover-for-plastic-tanks";
 
