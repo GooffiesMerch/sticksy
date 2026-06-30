@@ -23,6 +23,9 @@ import {
 import pdpReview1 from "@/assets/pdp-review-1.jpg";
 import pdpReview2 from "@/assets/pdp-review-2.jpg";
 import pdpReview3 from "@/assets/pdp-review-3.jpg";
+import tankReview1 from "@/assets/tank-review-1.jpg";
+import tankReview2 from "@/assets/tank-review-2.jpg";
+import tankReview3 from "@/assets/tank-review-3.jpg";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -195,6 +198,138 @@ function ProductDetail() {
   };
 
   const isStandalone = STANDALONE_HANDLES.has(handle);
+  const isWaterTank = handle === "insulated-water-tank-cover-for-plastic-tanks";
+
+  // Product-specific copy
+  const copy = isWaterTank
+    ? {
+        badge: "Pakistan's #1 insulated tank cover",
+        featureBullets: [
+          { icon: Droplets, text: "Keeps water cool in peak summer" },
+          { icon: ShieldCheck, text: "Prevents freezing in winter" },
+          { icon: Sparkles, text: "UV & weather resistant" },
+          { icon: Ruler, text: "Fits 400L – 1200L+ plastic tanks" },
+        ],
+        included: "1 insulated tank cover, adjustable straps, and a fitting guide.",
+        care: "Wipe clean with a damp cloth. Stays outdoor-ready year round.",
+        note: "Pick the size closest to your tank — straps adjust for a snug fit.",
+        timelineSteps: [
+          { icon: PackageCheck, title: "Order placed", desc: "We confirm your tank size and dispatch the matching cover." },
+          { icon: Truck, title: "Order dispatches", desc: "Carefully packed and shipped within 24–48 hours." },
+          { icon: HomeIcon, title: "Delivered!", desc: "Arrives ready to wrap around your rooftop tank." },
+        ],
+        sectionTitle: "Built to protect every drop.",
+        sectionSub: `Why the ${node.title} is worth every rupee.`,
+        sectionFeatures: [
+          { icon: ShieldCheck, title: "Thermal insulation", desc: "Multi-layer insulation keeps stored water cool in summer and prevents winter freezing." },
+          { icon: Droplets, title: "Algae & bacteria control", desc: "Blocks direct sunlight so algae can't grow inside your tank." },
+          { icon: Sparkles, title: "UV & weatherproof", desc: "Heat-reflective outer shell resists fading, rain, and harsh sun." },
+          { icon: Ruler, title: "Custom snug fit", desc: "Adjustable straps and multiple sizes for 400L to 1200L+ plastic tanks." },
+        ],
+        statsTitle: "Cool, clean water — all year round",
+        statsSub: "A simple cover that protects your family's water and your tank itself.",
+        stats: [
+          { pct: 96, label: "Customers report noticeably cooler water" },
+          { pct: 93, label: "Reduction in algae growth inside the tank" },
+          { pct: 90, label: "Longer tank lifespan vs. uncovered tanks" },
+        ],
+        compareSub: "Multi-layer insulation, weatherproof shell, and adjustable fit — built for Pakistan's rooftops.",
+        compareRows: [
+          "Multi-layer thermal insulation",
+          "Heat-reflective UV shield",
+          "Blocks sunlight (no algae)",
+          "Weather & rain resistant",
+          "Adjustable straps for snug fit",
+          "Fits 400L – 1200L+ plastic tanks",
+        ],
+        reviewsTitle: `What customers say about the ${node.title}`,
+        reviews: [
+          {
+            img: tankReview1,
+            name: "Imran S.",
+            location: "Lahore, PK",
+            title: "Water finally stays cool in June",
+            body: "Our rooftop tank used to make the water boiling hot by noon. After fitting this cover, even at 45°C the water is genuinely cool. Worth every rupee.",
+          },
+          {
+            img: tankReview2,
+            name: "Faisal A.",
+            location: "Islamabad, PK",
+            title: "Perfect fit on my 1000L tank",
+            body: "Straps were easy to adjust and the cover sits tight even in strong wind. No more green algae inside the tank either.",
+          },
+          {
+            img: tankReview3,
+            name: "Hina M.",
+            location: "Karachi, PK",
+            title: "Cleaner, cooler drinking water",
+            body: "I can taste the difference. Water from the tap is fresh and cool, and the kids don't complain about warm water anymore. Highly recommended.",
+          },
+        ],
+        faqs: [
+          { q: "Will this fit my plastic water tank?", a: "Yes — we make sizes for 400L, 500L, 800L, 1000L, 1200L and larger plastic tanks. Pick the closest size to yours; the adjustable straps handle small differences in shape." },
+          { q: "Does it really keep the water cool?", a: "Yes. The multi-layer insulated shell reflects sunlight and slows heat transfer, so stored water stays noticeably cooler — especially during Pakistan's summer." },
+          { q: "Will it stop algae inside the tank?", a: "By blocking direct sunlight from hitting the tank walls, the cover dramatically reduces algae and bacterial growth that thrive in sunlit water." },
+          { q: "Is it hard to install?", a: "Not at all. Wrap it around your tank, fasten the adjustable straps, and you're done — most people fit it in under 10 minutes." },
+          { q: "How long does shipping take?", a: "2–4 days across Pakistan. We dispatch within 24–48 hours of your order." },
+        ],
+        ctaShort: "Get the cover",
+      }
+    : {
+        badge: "Loved by happy customers",
+        featureBullets: [
+          { icon: Sparkles, text: "Premium matte vinyl finish" },
+          { icon: Droplets, text: "Waterproof & fade-resistant" },
+          { icon: ShieldCheck, text: "Removable — no paint damage" },
+          { icon: Ruler, text: "Fits standard 1–2 ton split ACs" },
+        ],
+        included: "1 custom-cut AC sticker, application squeegee, and step-by-step guide.",
+        care: "Wipe with a soft damp cloth. Avoid harsh chemicals or abrasive scrubs.",
+        note: "We resize each sticker to fit your AC. Just share dimensions after ordering.",
+        timelineSteps: [
+          { icon: PackageCheck, title: "Order placed", desc: "We confirm your design and AC size right away." },
+          { icon: Truck, title: "Order dispatches", desc: "Carefully packed and shipped within 24–48 hours." },
+          { icon: HomeIcon, title: "Delivered!", desc: "Arrives at your door, ready to apply." },
+        ],
+        sectionTitle: "Art that captivates and inspires.",
+        sectionSub: `Why the ${node.title} stands out.`,
+        sectionFeatures: [
+          { icon: ShieldCheck, title: "Premium Vinyl Quality", desc: "Crafted with high-grade matte vinyl that resists fading, scratches, and humidity." },
+          { icon: Maximize2, title: "Custom-fit Sizing", desc: "Resized to match your exact AC dimensions for a clean, edge-to-edge finish." },
+          { icon: Printer, title: "Exceptional Print Fidelity", desc: "Top-tier pigmented inks deliver stunning clarity and rich, true-to-design colors." },
+          { icon: HomeIcon, title: "Indoor Use Only", desc: "Designed specifically for indoor split AC units to enhance any living space." },
+        ],
+        statsTitle: "Transform Your Decor with Art",
+        statsSub: "A sticker can redefine your space and express your personality.",
+        stats: [
+          { pct: 95, label: "Enhances your decor with vibrant art." },
+          { pct: 92, label: "Delivers exceptional print quality." },
+          { pct: 89, label: "Perfect for any indoor space." },
+        ],
+        compareSub: "Premium matte vinyl, custom-fit sizing, and pigmented inks — built to look stunning on any indoor split AC.",
+        compareRows: [
+          "Premium matte vinyl",
+          "Pigmented archival inks",
+          "Custom-fit sizing",
+          "Vibrant color reproduction",
+          "Removable — no residue",
+          "Designed for indoor AC use",
+        ],
+        reviewsTitle: `What customers say about the ${node.title}`,
+        reviews: [
+          { img: pdpReview1, name: "Ayesha K.", location: "Lahore, PK", title: "Transformed my living room!", body: "The print quality is incredible and it fit my split AC perfectly. Guests can't stop asking where I got it from." },
+          { img: pdpReview2, name: "Rohan M.", location: "Mumbai, IN", title: "Looks even better in person", body: "Colors are super vibrant and applying it was so easy with the squeegee they included. Worth every rupee." },
+          { img: pdpReview3, name: "Priya S.", location: "Karachi, PK", title: "Packaging was so cute 🎁", body: "Delivery was quick and the Sticksy parcel felt like opening a gift. Sticker is premium quality — highly recommend!" },
+        ],
+        faqs: [
+          { q: "Will this sticker fit my AC?", a: "Our designs fit standard 1–2 ton split AC indoor units. For custom sizes, just share your AC dimensions after ordering and we'll resize it for free." },
+          { q: "Is it easy to apply?", a: "Yes! Each order includes a squeegee and a simple guide. Most customers apply it in under 10 minutes." },
+          { q: "Will it damage my AC paint?", a: "Not at all. We use premium removable vinyl that peels off cleanly without leaving residue." },
+          { q: "How long does shipping take?", a: "2–4 days across Pakistan, 7–14 days internationally." },
+          { q: "What if my sticker arrives damaged?", a: "We offer a 30-day replacement guarantee. Just send us a photo and we'll ship a fresh one." },
+        ],
+        ctaShort: node.title.split(" ").slice(0, 3).join(" "),
+      };
 
   return (
     <div className="min-h-screen bg-background">
