@@ -133,6 +133,7 @@ function CheckoutPage() {
                       size="sm"
                       onClick={() => removeItem(item.variantId)}
                       disabled={isLoading}
+                      aria-label={`Remove ${item.product.node.title} from cart`}
                     >
                       <Trash2 className="mr-1 h-4 w-4" />
                       Remove
