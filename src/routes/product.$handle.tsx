@@ -19,6 +19,8 @@ import {
   Check,
   X,
   Star,
+  Minus,
+  Plus,
 } from "lucide-react";
 import pdpReview1 from "@/assets/pdp-review-1.jpg";
 import pdpReview2 from "@/assets/pdp-review-2.jpg";
