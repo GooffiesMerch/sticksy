@@ -38,6 +38,12 @@ import { fetchProductByHandle, fetchProducts, formatPrice } from "@/lib/shopify"
 import { ProductCard } from "@/components/ProductCard";
 import { useCartStore } from "@/stores/cartStore";
 
+// Products that should render as a standalone landing page (no site header/footer,
+// no back link, no related products). Reached only via direct URL.
+const STANDALONE_HANDLES = new Set<string>([
+  "insulated-water-tank-cover-for-plastic-tanks",
+]);
+
 const productQueryOptions = (handle: string) =>
   queryOptions({
     queryKey: ["product", handle],
