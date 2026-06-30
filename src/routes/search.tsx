@@ -13,8 +13,8 @@ import { z } from "zod";
 const searchSchema = z.object({ q: z.string().optional().default("") });
 
 const productsQueryOptions = queryOptions({
-  queryKey: ["products"],
-  queryFn: () => fetchProducts(100),
+  queryKey: ["products", "search-all"],
+  queryFn: () => fetchProducts(100, undefined, { includeHidden: true }),
 });
 
 export const Route = createFileRoute("/search")({
