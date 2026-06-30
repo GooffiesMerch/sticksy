@@ -114,9 +114,17 @@ export const PRODUCT_BY_HANDLE_QUERY = `
   }
 `;
 
-export async function fetchProducts(first = 50, query?: string): Promise<ShopifyProduct[]> {
-  // Always exclude products tagged "hidden" from public listings.
-  const finalQuery = query ? `(${query}) AND -tag:hidden` : "-tag:hidden";
+export async function fetchProducts(
+  first = 50,
+  query?: string,
+  options: { includeHidden?: boolean } = {},
+): Promise<ShopifyProduct[]> {
+  // Always exclude products tagged "hidden" from public listings unless explicitly included.
+  const finalQuery = options.includeHidden
+    ? query
+    : query
+      ? `(${query}) AND -tag:hidden`
+      : "-tag:hidden";
   const data = await storefrontApiRequest(PRODUCTS_QUERY, { first, query: finalQuery });
   return data?.data?.products?.edges ?? [];
 }
