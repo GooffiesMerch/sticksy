@@ -586,8 +586,7 @@ function ProductDetail() {
             What sets the {node.title} apart
           </h2>
           <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
-            Premium matte vinyl, custom-fit sizing, and pigmented inks — built to look
-            stunning on any indoor split AC.
+            {copy.compareSub}
           </p>
           <div className="mt-8 overflow-hidden rounded-2xl border">
             <table className="w-full text-sm">
@@ -603,14 +602,7 @@ function ProductDetail() {
                 </tr>
               </thead>
               <tbody>
-                {[
-                  "Premium matte vinyl",
-                  "Pigmented archival inks",
-                  "Custom-fit sizing",
-                  "Vibrant color reproduction",
-                  "Removable — no residue",
-                  "Designed for indoor AC use",
-                ].map((row, i) => (
+                {copy.compareRows.map((row, i) => (
                   <tr key={row} className={i % 2 === 0 ? "bg-background" : "bg-muted/20"}>
                     <td className="px-4 py-3.5 font-medium">{row}</td>
                     <td className="px-4 py-3.5 text-center">
@@ -626,7 +618,7 @@ function ProductDetail() {
           </div>
           <div className="mt-6 text-center">
             <Button size="lg" onClick={handleAdd} disabled={isLoading || !selectedVariant?.availableForSale}>
-              Try the {node.title.split(" ").slice(0, 3).join(" ")}
+              Try the {copy.ctaShort}
             </Button>
           </div>
         </section>
@@ -634,35 +626,13 @@ function ProductDetail() {
         {/* Reviews */}
         <section className="mt-20">
           <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight">
-            What customers say about the {node.title}
+            {copy.reviewsTitle}
           </h2>
           <p className="mt-2 text-center text-sm text-muted-foreground">
             Real photos shared by Sticksy customers.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                img: pdpReview1,
-                name: "Ayesha K.",
-                location: "Lahore, PK",
-                title: "Transformed my living room!",
-                body: "The print quality is incredible and it fit my split AC perfectly. Guests can't stop asking where I got it from.",
-              },
-              {
-                img: pdpReview2,
-                name: "Rohan M.",
-                location: "Mumbai, IN",
-                title: "Looks even better in person",
-                body: "Colors are super vibrant and applying it was so easy with the squeegee they included. Worth every rupee.",
-              },
-              {
-                img: pdpReview3,
-                name: "Priya S.",
-                location: "Karachi, PK",
-                title: "Packaging was so cute 🎁",
-                body: "Delivery was quick and the Sticksy parcel felt like opening a gift. Sticker is premium quality — highly recommend!",
-              },
-            ].map((r) => (
+            {copy.reviews.map((r) => (
               <div key={r.name} className="overflow-hidden rounded-2xl border bg-card">
                 <img
                   src={r.img}
