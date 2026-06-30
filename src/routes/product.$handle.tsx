@@ -260,10 +260,10 @@ function ProductDetail() {
           },
           {
             img: tankReview3,
-            name: "Hina M.",
-            location: "Karachi, PK",
-            title: "Cleaner, cooler drinking water",
-            body: "I can taste the difference. Water from the tap is fresh and cool, and the kids don't complain about warm water anymore. Highly recommended.",
+            name: "Bilal R.",
+            location: "Rawalpindi, PK",
+            title: "Cool water even in peak summer",
+            body: "Our tank sits in direct sun on the roof and used to give scalding water by afternoon. With this cover the water stays genuinely cool — perfect for bath after work and for filling bottles before my daily commute. Game changer in June.",
           },
         ],
         faqs: [
