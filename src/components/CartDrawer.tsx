@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -16,7 +15,6 @@ import { formatPrice } from "@/lib/shopify";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
   const { items, isLoading, isSyncing, updateQuantity, removeItem, syncCart } =
     useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -32,7 +30,13 @@ export const CartDrawer = () => {
 
   const handleCheckout = () => {
     setIsOpen(false);
-    navigate({ to: "/checkout" });
+    if (typeof window !== "undefined") {
+      const checkoutUrl =
+        window.location.hostname === "www.sticksyy.com"
+          ? "https://sticksyy.com/checkout"
+          : "/checkout";
+      window.location.assign(checkoutUrl);
+    }
   };
 
   return (
