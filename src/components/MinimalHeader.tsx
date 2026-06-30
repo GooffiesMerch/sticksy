@@ -16,7 +16,6 @@ export function MinimalHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6">
-        <CartDrawer />
         <form onSubmit={onSubmit} className="relative w-full max-w-xs sm:max-w-sm">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -28,6 +27,7 @@ export function MinimalHeader() {
             className="pl-9"
           />
         </form>
+        <CartDrawer />
       </div>
     </header>
   );
