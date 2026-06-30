@@ -382,7 +382,7 @@ function ProductDetail() {
             <div>
               <Badge variant="secondary" className="mb-3 gap-1.5">
                 <Heart className="h-3.5 w-3.5 fill-current text-rose-500" />
-                Loved by happy customers
+                {copy.badge}
               </Badge>
               <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">
                 {node.title}
@@ -400,12 +400,7 @@ function ProductDetail() {
 
             {/* Feature bullets */}
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-              {[
-                { icon: Sparkles, text: "Premium matte vinyl finish" },
-                { icon: Droplets, text: "Waterproof & fade-resistant" },
-                { icon: ShieldCheck, text: "Removable — no paint damage" },
-                { icon: Ruler, text: "Fits standard 1–2 ton split ACs" },
-              ].map(({ icon: Icon, text }) => (
+              {copy.featureBullets.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-center gap-2">
                   <Icon className="h-4 w-4 text-primary" />
                   <span>{text}</span>
