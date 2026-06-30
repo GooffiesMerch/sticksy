@@ -36,6 +36,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Header } from "@/components/Header";
+import { MinimalHeader } from "@/components/MinimalHeader";
 import { Footer } from "@/components/Footer";
 import { fetchProductByHandle, fetchProducts, formatPrice } from "@/lib/shopify";
 import { ProductCard } from "@/components/ProductCard";
@@ -351,7 +352,7 @@ function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      {isStandalone ? <MinimalHeader /> : <Header />}
       <main className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
         {!isStandalone && (
           <Link
