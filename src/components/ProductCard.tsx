@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "@tanstack/react-router";
 import { Loader2, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { formatPrice, type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
 
-export function ProductCard({ product }: { product: ShopifyProduct }) {
+function ProductCardImpl({ product }: { product: ShopifyProduct }) {
   const addItem = useCartStore((s) => s.addItem);
   const isLoading = useCartStore((s) => s.isLoading);
 
@@ -40,8 +41,9 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
           <img
             src={image.url}
             alt={image.altText ?? node.title}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-muted-foreground">
@@ -72,3 +74,5 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
     </Link>
   );
 }
+
+export const ProductCard = memo(ProductCardImpl);
