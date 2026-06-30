@@ -38,6 +38,12 @@ import { fetchProductByHandle, fetchProducts, formatPrice } from "@/lib/shopify"
 import { ProductCard } from "@/components/ProductCard";
 import { useCartStore } from "@/stores/cartStore";
 
+// Products that should render as a standalone landing page (no site header/footer,
+// no back link, no related products). Reached only via direct URL.
+const STANDALONE_HANDLES = new Set<string>([
+  "insulated-water-tank-cover-for-plastic-tanks",
+]);
+
 const productQueryOptions = (handle: string) =>
   queryOptions({
     queryKey: ["product", handle],
@@ -188,16 +194,20 @@ function ProductDetail() {
     toast.success(`${node.title} added to cart`, { position: "top-center" });
   };
 
+  const isStandalone = STANDALONE_HANDLES.has(handle);
+
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      {!isStandalone && <Header />}
       <main className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
-        <Link
-          to="/"
-          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ChevronLeft className="h-4 w-4" /> Back to shop
-        </Link>
+        {!isStandalone && (
+          <Link
+            to="/"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
+          >
+            <ChevronLeft className="h-4 w-4" /> Back to shop
+          </Link>
+        )}
 
         <div className="mt-6 grid gap-8 lg:gap-12 lg:grid-cols-2">
           {/* GALLERY */}
@@ -619,7 +629,7 @@ function ProductDetail() {
         </section>
 
         {/* You may also like */}
-        {related.length > 0 && (
+        {!isStandalone && related.length > 0 && (
           <section className="mt-20">
             <h2 className="text-center text-2xl sm:text-3xl font-semibold tracking-tight">
               You may also like
@@ -632,7 +642,7 @@ function ProductDetail() {
           </section>
         )}
       </main>
-      <Footer />
+      {!isStandalone && <Footer />}
     </div>
   );
 }
