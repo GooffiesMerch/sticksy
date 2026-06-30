@@ -333,7 +333,7 @@ function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      {!isStandalone && <Header />}
+      <Header />
       <main className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
         {!isStandalone && (
           <Link
