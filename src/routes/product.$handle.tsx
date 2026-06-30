@@ -206,7 +206,7 @@ function ProductDetail() {
       variantId: selectedVariant.id,
       variantTitle: selectedVariant.title,
       price: selectedVariant.price,
-      quantity: 1,
+      quantity,
       selectedOptions: selectedVariant.selectedOptions ?? [],
     });
     const url = useCartStore.getState().getCheckoutUrl();
