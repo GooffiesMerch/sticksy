@@ -112,6 +112,7 @@ function CheckoutPage() {
                         className="h-8 w-8"
                         onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
                         disabled={isLoading}
+                        aria-label={`Decrease quantity of ${item.product.node.title}`}
                       >
                         <Minus className="h-3 w-3" />
                       </Button>
@@ -122,6 +123,7 @@ function CheckoutPage() {
                         className="h-8 w-8"
                         onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
                         disabled={isLoading}
+                        aria-label={`Increase quantity of ${item.product.node.title}`}
                       >
                         <Plus className="h-3 w-3" />
                       </Button>
@@ -131,6 +133,7 @@ function CheckoutPage() {
                       size="sm"
                       onClick={() => removeItem(item.variantId)}
                       disabled={isLoading}
+                      aria-label={`Remove ${item.product.node.title} from cart`}
                     >
                       <Trash2 className="mr-1 h-4 w-4" />
                       Remove
