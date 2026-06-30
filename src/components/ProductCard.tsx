@@ -40,9 +40,10 @@ function ProductCardImpl({ product }: { product: ShopifyProduct }) {
         {image ? (
           <img
             src={image.url}
+            alt={image.altText ?? node.title}
+            loading="lazy"
             decoding="async"
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-muted-foreground">
@@ -75,35 +76,3 @@ function ProductCardImpl({ product }: { product: ShopifyProduct }) {
 }
 
 export const ProductCard = memo(ProductCardImpl);
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center text-muted-foreground">
-            <ShoppingBag className="h-10 w-10" />
-          </div>
-        )}
-      </div>
-      <div className="flex flex-col gap-1">
-        <h3 className="font-medium leading-tight line-clamp-1">{node.title}</h3>
-        <p className="text-sm text-muted-foreground">
-          {formatPrice(price.amount, price.currencyCode)}
-        </p>
-      </div>
-      <Button
-        size="sm"
-        variant="outline"
-        onClick={handleAdd}
-        disabled={isLoading || !variant || !variant.availableForSale}
-      >
-        {isLoading ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
-        ) : !variant?.availableForSale ? (
-          "Sold out"
-        ) : (
-          "Add to cart"
-        )}
-      </Button>
-    </Link>
-  );
-}
