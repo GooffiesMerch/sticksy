@@ -19,6 +19,8 @@ import {
   Check,
   X,
   Star,
+  Minus,
+  Plus,
 } from "lucide-react";
 import pdpReview1 from "@/assets/pdp-review-1.jpg";
 import pdpReview2 from "@/assets/pdp-review-2.jpg";
@@ -168,6 +170,7 @@ function ProductDetail() {
   );
 
   const [selectedImageIdx, setSelectedImageIdx] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const images = node.images.edges;
 
   // Related products
@@ -185,18 +188,8 @@ function ProductDetail() {
   const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
   const delivery = new Date(today); delivery.setDate(today.getDate() + 3);
 
-  const handleAdd = async () => {
-    if (!selectedVariant) return;
-    await addItem({
-      product,
-      variantId: selectedVariant.id,
-      variantTitle: selectedVariant.title,
-      price: selectedVariant.price,
-      quantity: 1,
-      selectedOptions: selectedVariant.selectedOptions ?? [],
-    });
-    toast.success(`${node.title} added to cart`, { position: "top-center" });
-  };
+
+
 
   const handleBuyNow = async () => {
     if (!selectedVariant) return;
@@ -205,7 +198,7 @@ function ProductDetail() {
       variantId: selectedVariant.id,
       variantTitle: selectedVariant.title,
       price: selectedVariant.price,
-      quantity: 1,
+      quantity,
       selectedOptions: selectedVariant.selectedOptions ?? [],
     });
     const url = useCartStore.getState().getCheckoutUrl();
@@ -450,11 +443,36 @@ function ProductDetail() {
             )}
 
             <div className="flex flex-col sm:flex-row gap-3">
+              <div className="inline-flex items-center rounded-md border border-input bg-background h-12">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="h-12 w-12 rounded-r-none"
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  aria-label="Decrease quantity"
+                  disabled={quantity <= 1}
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <span className="w-10 text-center text-base font-medium" aria-live="polite">
+                  {quantity}
+                </span>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="h-12 w-12 rounded-l-none"
+                  onClick={() => setQuantity((q) => q + 1)}
+                  aria-label="Increase quantity"
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
               <Button
                 size="lg"
-                variant="outline"
                 className="h-12 text-base sm:flex-1"
-                onClick={handleAdd}
+                onClick={handleBuyNow}
                 disabled={isLoading || !selectedVariant?.availableForSale}
               >
                 {isLoading ? (
@@ -462,18 +480,11 @@ function ProductDetail() {
                 ) : !selectedVariant?.availableForSale ? (
                   "Sold out"
                 ) : (
-                  "Add to cart"
+                  "Buy now"
                 )}
               </Button>
-              <Button
-                size="lg"
-                className="h-12 text-base sm:flex-1"
-                onClick={handleBuyNow}
-                disabled={isLoading || !selectedVariant?.availableForSale}
-              >
-                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Buy now"}
-              </Button>
             </div>
+
 
             {/* Info blocks */}
             <div className="grid gap-3 sm:grid-cols-3">
@@ -647,7 +658,7 @@ function ProductDetail() {
             </table>
           </div>
           <div className="mt-6 text-center">
-            <Button size="lg" onClick={handleAdd} disabled={isLoading || !selectedVariant?.availableForSale}>
+            <Button size="lg" onClick={handleBuyNow} disabled={isLoading || !selectedVariant?.availableForSale}>
               Try the {copy.ctaShort}
             </Button>
           </div>
