@@ -428,7 +428,9 @@ function Index() {
       </section>
 
       {/* CUSTOM */}
-      <CustomStickerSection />
+      <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-16 sm:px-6"><Skeleton className="h-96 w-full rounded-3xl" /></div>}>
+        <CustomStickerSection />
+      </Suspense>
 
       {/* CONTACT */}
       <section id="contact" className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
