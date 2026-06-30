@@ -7,13 +7,15 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
 import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { useCartSync } from "../hooks/useCartSync";
-import { ChatWidget } from "../components/ChatWidget";
+const ChatWidget = lazy(() =>
+  import("../components/ChatWidget").then((m) => ({ default: m.ChatWidget })),
+);
 
 function NotFoundComponent() {
   return (
