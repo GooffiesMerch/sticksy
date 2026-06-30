@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { lazy, Suspense, useMemo, useRef, useState } from "react";
 import { ArrowRight, Star, Sparkles, Truck, ShieldCheck, Send, PlayCircle, Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,9 +15,6 @@ const CustomStickerSection = lazy(() =>
   import("@/components/CustomStickerSection").then((m) => ({ default: m.CustomStickerSection })),
 );
 import { fetchProducts } from "@/lib/shopify";
-import { COLLECTIONS } from "@/lib/collections";
-import { hostedAssetUrl } from "@/lib/deployment";
-import { toast } from "sonner";
 import { COLLECTIONS } from "@/lib/collections";
 import { hostedAssetUrl } from "@/lib/deployment";
 import { toast } from "sonner";
