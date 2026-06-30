@@ -14,7 +14,7 @@ const searchSchema = z.object({ q: z.string().optional().default("") });
 
 const productsQueryOptions = queryOptions({
   queryKey: ["products", "search-all"],
-  queryFn: () => fetchProducts(100, undefined, { includeHidden: true }),
+  queryFn: () => fetchProducts(250, undefined, { includeHidden: true }),
 });
 
 export const Route = createFileRoute("/search")({
