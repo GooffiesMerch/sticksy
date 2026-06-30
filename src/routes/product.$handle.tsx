@@ -188,18 +188,8 @@ function ProductDetail() {
   const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
   const delivery = new Date(today); delivery.setDate(today.getDate() + 3);
 
-  const handleAdd = async () => {
-    if (!selectedVariant) return;
-    await addItem({
-      product,
-      variantId: selectedVariant.id,
-      variantTitle: selectedVariant.title,
-      price: selectedVariant.price,
-      quantity: 1,
-      selectedOptions: selectedVariant.selectedOptions ?? [],
-    });
-    toast.success(`${node.title} added to cart`, { position: "top-center" });
-  };
+
+
 
   const handleBuyNow = async () => {
     if (!selectedVariant) return;
