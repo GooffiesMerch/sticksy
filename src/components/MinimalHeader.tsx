@@ -2,8 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { Button } from "@/components/ui/button";
-import { hostedAssetUrl } from "@/lib/deployment";
-import logo from "@/assets/sticksy-logo.png.asset.json";
 
 export function MinimalHeader() {
   return (
