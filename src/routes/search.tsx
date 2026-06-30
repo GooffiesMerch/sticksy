@@ -22,7 +22,11 @@ export const Route = createFileRoute("/search")({
   head: () => ({
     meta: [
       { title: "Search — Sticksy" },
-      { name: "description", content: "Search AC stickers at Sticksy." },
+      { name: "description", content: "Search premium vinyl AC stickers and custom skins at Sticksy." },
+      { name: "robots", content: "noindex,follow" },
+      { property: "og:title", content: "Search — Sticksy" },
+      { property: "og:description", content: "Search premium vinyl AC stickers at Sticksy." },
+      { property: "og:type", content: "website" },
     ],
   }),
   loader: async ({ context }) => {
