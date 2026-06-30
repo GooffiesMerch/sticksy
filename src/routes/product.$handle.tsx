@@ -36,6 +36,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Header } from "@/components/Header";
+import { MinimalHeader } from "@/components/MinimalHeader";
 import { Footer } from "@/components/Footer";
 import { fetchProductByHandle, fetchProducts, formatPrice } from "@/lib/shopify";
 import { ProductCard } from "@/components/ProductCard";
