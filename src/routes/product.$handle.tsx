@@ -658,7 +658,7 @@ function ProductDetail() {
             </table>
           </div>
           <div className="mt-6 text-center">
-            <Button size="lg" onClick={handleAdd} disabled={isLoading || !selectedVariant?.availableForSale}>
+            <Button size="lg" onClick={handleBuyNow} disabled={isLoading || !selectedVariant?.availableForSale}>
               Try the {copy.ctaShort}
             </Button>
           </div>
