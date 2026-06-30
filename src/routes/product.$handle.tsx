@@ -70,7 +70,11 @@ export const Route = createFileRoute("/product/$handle")({
     const fallback = node
       ? `Shop the ${node.title} premium vinyl AC sticker from Sticksy. Easy to apply, made to last, shipped fast across Pakistan and worldwide.`
       : "Premium vinyl AC stickers from Sticksy — easy to apply, made to last.";
-    const description = (rawDesc.length >= 50 ? rawDesc : fallback).slice(0, 300);
+    const source = rawDesc.length >= 50 ? rawDesc : fallback;
+    const description =
+      source.length <= 160
+        ? source
+        : source.slice(0, 157).replace(/\s+\S*$/, "").trimEnd() + "…";
     const url = `https://sticksy.lovable.app/product/${params.handle}`;
     const image = node?.images?.edges?.[0]?.node?.url;
     const price = node?.priceRange?.minVariantPrice;
