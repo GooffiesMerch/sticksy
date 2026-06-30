@@ -194,16 +194,20 @@ function ProductDetail() {
     toast.success(`${node.title} added to cart`, { position: "top-center" });
   };
 
+  const isStandalone = STANDALONE_HANDLES.has(handle);
+
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      {!isStandalone && <Header />}
       <main className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
-        <Link
-          to="/"
-          className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ChevronLeft className="h-4 w-4" /> Back to shop
-        </Link>
+        {!isStandalone && (
+          <Link
+            to="/"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
+          >
+            <ChevronLeft className="h-4 w-4" /> Back to shop
+          </Link>
+        )}
 
         <div className="mt-6 grid gap-8 lg:gap-12 lg:grid-cols-2">
           {/* GALLERY */}
