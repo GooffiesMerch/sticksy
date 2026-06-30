@@ -448,20 +448,31 @@ function ProductDetail() {
               </div>
             )}
 
-            <Button
-              size="lg"
-              className="h-12 text-base"
-              onClick={handleAdd}
-              disabled={isLoading || !selectedVariant?.availableForSale}
-            >
-              {isLoading ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : !selectedVariant?.availableForSale ? (
-                "Sold out"
-              ) : (
-                "Add to cart"
-              )}
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-12 text-base sm:flex-1"
+                onClick={handleAdd}
+                disabled={isLoading || !selectedVariant?.availableForSale}
+              >
+                {isLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : !selectedVariant?.availableForSale ? (
+                  "Sold out"
+                ) : (
+                  "Add to cart"
+                )}
+              </Button>
+              <Button
+                size="lg"
+                className="h-12 text-base sm:flex-1"
+                onClick={handleBuyNow}
+                disabled={isLoading || !selectedVariant?.availableForSale}
+              >
+                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Buy now"}
+              </Button>
+            </div>
 
             {/* Info blocks */}
             <div className="grid gap-3 sm:grid-cols-3">
