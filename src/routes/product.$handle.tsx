@@ -130,6 +130,18 @@ export const Route = createFileRoute("/product/$handle")({
                   : undefined,
               }),
             },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: (params.handle === WATER_TANK_HANDLE ? TANK_FAQS : STICKER_FAQS).map((f) => ({
+                  "@type": "Question",
+                  name: f.q,
+                  acceptedAnswer: { "@type": "Answer", text: f.a },
+                })),
+              }),
+            },
           ]
         : [],
     };
