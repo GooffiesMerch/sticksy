@@ -515,34 +515,13 @@ function ProductDetail() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="order-2 lg:order-1">
               <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-                Art that captivates and inspires.
+                {copy.sectionTitle}
               </h2>
               <p className="mt-3 text-muted-foreground">
-                Why the {node.title} stands out.
+                {copy.sectionSub}
               </p>
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
-                {[
-                  {
-                    icon: ShieldCheck,
-                    title: "Premium Vinyl Quality",
-                    desc: "Crafted with high-grade matte vinyl that resists fading, scratches, and humidity.",
-                  },
-                  {
-                    icon: Maximize2,
-                    title: "Custom-fit Sizing",
-                    desc: "Resized to match your exact AC dimensions for a clean, edge-to-edge finish.",
-                  },
-                  {
-                    icon: Printer,
-                    title: "Exceptional Print Fidelity",
-                    desc: "Top-tier pigmented inks deliver stunning clarity and rich, true-to-design colors.",
-                  },
-                  {
-                    icon: HomeIcon,
-                    title: "Indoor Use Only",
-                    desc: "Designed specifically for indoor split AC units to enhance any living space.",
-                  },
-                ].map((f) => (
+                {copy.sectionFeatures.map((f) => (
                   <div key={f.title} className="flex gap-3">
                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                       <f.icon className="h-5 w-5" />
@@ -576,18 +555,14 @@ function ProductDetail() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="text-3xl font-semibold tracking-tight">
-                Transform Your Decor with Art
+                {copy.statsTitle}
               </h2>
               <p className="mt-3 text-muted-foreground">
-                A sticker can redefine your space and express your personality.
+                {copy.statsSub}
               </p>
             </div>
             <div className="space-y-5">
-              {[
-                { pct: 95, label: "Enhances your decor with vibrant art." },
-                { pct: 92, label: "Delivers exceptional print quality." },
-                { pct: 89, label: "Perfect for any indoor space." },
-              ].map((s) => (
+              {copy.stats.map((s) => (
                 <div key={s.label}>
                   <div className="flex items-center justify-between text-sm">
                     <span className="font-medium">{s.label}</span>
