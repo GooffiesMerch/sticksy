@@ -361,13 +361,7 @@ function ProductDetail() {
           { img: pdpReview2, name: "Rohan M.", location: "Mumbai, IN", title: "Looks even better in person", body: "Colors are super vibrant and applying it was so easy with the squeegee they included. Worth every rupee." },
           { img: pdpReview3, name: "Priya S.", location: "Karachi, PK", title: "Packaging was so cute 🎁", body: "Delivery was quick and the Sticksy parcel felt like opening a gift. Sticker is premium quality — highly recommend!" },
         ],
-        faqs: [
-          { q: "Will this sticker fit my AC?", a: "Our designs fit standard 1–2 ton split AC indoor units. For custom sizes, just share your AC dimensions after ordering and we'll resize it for free." },
-          { q: "Is it easy to apply?", a: "Yes! Each order includes a squeegee and a simple guide. Most customers apply it in under 10 minutes." },
-          { q: "Will it damage my AC paint?", a: "Not at all. We use premium removable vinyl that peels off cleanly without leaving residue." },
-          { q: "How long does shipping take?", a: "2–4 days across Pakistan, 7–14 days internationally." },
-          { q: "What if my sticker arrives damaged?", a: "We offer a 30-day replacement guarantee. Just send us a photo and we'll ship a fresh one." },
-        ],
+        faqs: STICKER_FAQS,
         ctaShort: node.title.split(" ").slice(0, 3).join(" "),
       };
 
