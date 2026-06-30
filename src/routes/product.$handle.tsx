@@ -665,40 +665,12 @@ function ProductDetail() {
             Frequently asked questions
           </h2>
           <Accordion type="single" collapsible className="mt-6">
-            <AccordionItem value="fit">
-              <AccordionTrigger>Will this sticker fit my AC?</AccordionTrigger>
-              <AccordionContent>
-                Our designs fit standard 1–2 ton split AC indoor units. For custom sizes, just
-                share your AC dimensions after ordering and we'll resize it for free.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="apply">
-              <AccordionTrigger>Is it easy to apply?</AccordionTrigger>
-              <AccordionContent>
-                Yes! Each order includes a squeegee and a simple guide. Most customers apply
-                it in under 10 minutes.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="damage">
-              <AccordionTrigger>Will it damage my AC paint?</AccordionTrigger>
-              <AccordionContent>
-                Not at all. We use premium removable vinyl that peels off cleanly without
-                leaving residue.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="shipping">
-              <AccordionTrigger>How long does shipping take?</AccordionTrigger>
-              <AccordionContent>
-                2–4 days across Pakistan, 7–14 days internationally.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="damaged">
-              <AccordionTrigger>What if my sticker arrives damaged?</AccordionTrigger>
-              <AccordionContent>
-                We offer a 30-day replacement guarantee. Just send us a photo and we'll ship
-                a fresh one.
-              </AccordionContent>
-            </AccordionItem>
+            {copy.faqs.map((f, i) => (
+              <AccordionItem key={i} value={`faq-${i}`}>
+                <AccordionTrigger>{f.q}</AccordionTrigger>
+                <AccordionContent>{f.a}</AccordionContent>
+              </AccordionItem>
+            ))}
           </Accordion>
         </section>
 
