@@ -615,7 +615,7 @@ function ProductDetail() {
 
         {/* Transform decor — stat bars */}
         <section className="mt-20 rounded-2xl border bg-card p-8 sm:p-12">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
             <div>
               <h2 className="text-3xl font-semibold tracking-tight">
                 {copy.statsTitle}
