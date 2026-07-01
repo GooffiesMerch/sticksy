@@ -378,7 +378,7 @@ function ProductDetail() {
           </Link>
         )}
 
-        <div className="mt-6 grid gap-8 lg:gap-12 lg:grid-cols-2">
+        <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
           {/* GALLERY */}
           <div className="flex flex-col gap-3">
             <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
