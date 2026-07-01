@@ -173,18 +173,6 @@ function Index() {
         </div>
       </section>
 
-      {/* PRINTED IN STUDIO */}
-      <section className="w-full bg-black">
-        <video
-          src={hostedAssetUrl(printerPenguinVideo.url)}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="block h-auto w-full"
-        />
-      </section>
 
 
       {/* PRODUCTS */}
