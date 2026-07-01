@@ -63,7 +63,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://sticksy.lovable.app/" },
-      { rel: "preload", as: "image", href: hostedAssetUrl(heroImg.url), fetchpriority: "high" },
+      { rel: "preload", as: "image", href: hostedAssetUrl(heroImg.url), fetchPriority: "high" },
     ],
     scripts: [
       {
