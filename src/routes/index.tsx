@@ -174,14 +174,14 @@ function Index() {
       </section>
 
       {/* PRINTED IN STUDIO */}
-      <section className="w-full">
-        <img
-          src={hostedAssetUrl(printerPikachu.url)}
-          alt="Wide-format printer printing Pikachu AC stickers in the Sticksy studio"
-          width={1920}
-          height={1080}
-          loading="lazy"
-          decoding="async"
+      <section className="w-full bg-black">
+        <video
+          src={hostedAssetUrl(printerVideo.url)}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
           className="block h-auto w-full"
         />
       </section>
