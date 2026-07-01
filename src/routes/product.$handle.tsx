@@ -378,7 +378,7 @@ function ProductDetail() {
           </Link>
         )}
 
-        <div className="mt-6 grid gap-8 lg:gap-12 lg:grid-cols-2">
+        <div className="mt-6 grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
           {/* GALLERY */}
           <div className="flex flex-col gap-3">
             <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
@@ -575,8 +575,8 @@ function ProductDetail() {
 
         {/* Art that captivates */}
         <section className="mt-20">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div className="order-2 lg:order-1">
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
+            <div className="order-2 md:order-1">
               <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
                 {copy.sectionTitle}
               </h2>
@@ -599,7 +599,7 @@ function ProductDetail() {
                 ))}
               </div>
             </div>
-            <div className="order-1 lg:order-2">
+            <div className="order-1 md:order-2">
               <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
                 {images[0]?.node && (
                   <img
@@ -615,7 +615,7 @@ function ProductDetail() {
 
         {/* Transform decor — stat bars */}
         <section className="mt-20 rounded-2xl border bg-card p-8 sm:p-12">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
             <div>
               <h2 className="text-3xl font-semibold tracking-tight">
                 {copy.statsTitle}
