@@ -23,9 +23,9 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/75 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6">
-        <Link to="/" className="flex min-w-0 items-center" aria-label="Sticksy home">
+        <Link to="/" className="flex min-w-0 items-center transition-opacity hover:opacity-80" aria-label="Sticksy home">
           <img
             src={hostedAssetUrl(logo.url)}
             alt="Sticksy"
@@ -35,8 +35,13 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm md:flex">
-          <Link to="/" className="text-muted-foreground hover:text-foreground">
+        <nav className="hidden items-center gap-1 text-sm font-medium md:flex">
+          <Link
+            to="/"
+            className="relative rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-foreground" }}
+            activeOptions={{ exact: true }}
+          >
             Shop
           </Link>
           {COLLECTIONS.map((c) => (
@@ -44,15 +49,17 @@ export function Header() {
               key={c.slug}
               to="/collections/$slug"
               params={{ slug: c.slug }}
-              className="text-muted-foreground hover:text-foreground"
+              className="relative rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-foreground" }}
             >
               {c.name}
             </Link>
           ))}
-          <a href="#contact" className="text-muted-foreground hover:text-foreground">
+          <a href="#contact" className="relative rounded-full px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground">
             Contact
           </a>
         </nav>
+
 
         <div className="flex items-center gap-1">
           <Sheet open={searchOpen} onOpenChange={setSearchOpen}>
