@@ -174,14 +174,14 @@ function Index() {
       </section>
 
       {/* PRINTED IN STUDIO */}
-      <section className="w-full bg-black">
-        <video
-          src={hostedAssetUrl(printerVideo.url)}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
+      <section className="w-full">
+        <img
+          src={hostedAssetUrl(printerPenguin.url)}
+          alt="Wide-format printer printing Madagascar Penguin AC stickers in the Sticksy studio"
+          width={1920}
+          height={1080}
+          loading="lazy"
+          decoding="async"
           className="block h-auto w-full"
         />
       </section>
