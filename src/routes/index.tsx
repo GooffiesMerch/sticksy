@@ -27,7 +27,7 @@ import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
 import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
 import review3 from "@/assets/review-3.jpg";
-import printerPikachu from "@/assets/printer-pikachu.jpg.asset.json";
+import printerVideo from "@/assets/printer-studio.mp4.asset.json";
 
 const productsQueryOptions = queryOptions({
   queryKey: ["products"],
