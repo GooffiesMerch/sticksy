@@ -175,7 +175,28 @@ function Index() {
 
 
 
+      {/* BRAND MARQUEE */}
+      <section aria-label="Compatible AC brands" className="border-y bg-muted/30 py-6">
+        <p className="mb-4 text-center text-xs font-medium uppercase tracking-widest text-muted-foreground">
+          Fits all major AC brands in Pakistan
+        </p>
+        <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="flex w-max animate-marquee gap-16 pr-16">
+            {[...Array(2)].map((_, dup) => (
+              <div key={dup} className="flex shrink-0 items-center gap-16">
+                {["Dawlance", "Gree", "Haier", "Orient", "PEL", "Kenwood", "TCL", "Mitsubishi"].map((b) => (
+                  <span key={b} className="text-2xl font-semibold tracking-tight text-muted-foreground/80 sm:text-3xl">
+                    {b}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PRODUCTS */}
+
       <section id="products" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
