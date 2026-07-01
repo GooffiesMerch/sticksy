@@ -599,7 +599,7 @@ function ProductDetail() {
                 ))}
               </div>
             </div>
-            <div className="order-1 lg:order-2">
+            <div className="order-1 md:order-2">
               <div className="aspect-square overflow-hidden rounded-2xl bg-muted">
                 {images[0]?.node && (
                   <img
