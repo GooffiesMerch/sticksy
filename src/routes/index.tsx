@@ -27,7 +27,7 @@ import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
 import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
 import review3 from "@/assets/review-3.jpg";
-import printerPenguinVideo from "@/assets/printer-penguin.mp4.asset.json";
+
 
 const productsQueryOptions = queryOptions({
   queryKey: ["products"],
@@ -173,18 +173,6 @@ function Index() {
         </div>
       </section>
 
-      {/* PRINTED IN STUDIO */}
-      <section className="w-full bg-black">
-        <video
-          src={hostedAssetUrl(printerPenguinVideo.url)}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="block h-auto w-full"
-        />
-      </section>
 
 
       {/* PRODUCTS */}
