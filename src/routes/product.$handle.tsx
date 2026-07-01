@@ -575,7 +575,7 @@ function ProductDetail() {
 
         {/* Art that captivates */}
         <section className="mt-20">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
             <div className="order-2 lg:order-1">
               <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
                 {copy.sectionTitle}
