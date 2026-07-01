@@ -27,8 +27,7 @@ import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
 import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
 import review3 from "@/assets/review-3.jpg";
-import printerImg from "@/assets/printer-studio.jpg.asset.json";
-import printerVideo from "@/assets/printer-studio.mp4.asset.json";
+import printerPikachu from "@/assets/printer-pikachu.jpg.asset.json";
 
 const productsQueryOptions = queryOptions({
   queryKey: ["products"],
@@ -175,43 +174,18 @@ function Index() {
       </section>
 
       {/* PRINTED IN STUDIO */}
-      <section className="bg-muted/40 py-16">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 md:items-center">
-          <div className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-2xl" />
-            <video
-              src={hostedAssetUrl(printerVideo.url)}
-              poster={hostedAssetUrl(printerImg.url)}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              width={1600}
-              height={1024}
-              className="aspect-[16/10] w-full rounded-3xl object-cover shadow-xl"
-            />
-          </div>
-          <div className="space-y-5">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-              <Sparkles className="h-3.5 w-3.5" /> Printed in-house
-            </span>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Made fresh in our Lahore studio
-            </h2>
-            <p className="text-muted-foreground">
-              Every sticker is printed to order on premium UV-cured vinyl using our wide-format
-              machine. No middlemen, no warehouse stock — just sharp colours and crisp detail
-              made the day your order comes in.
-            </p>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-start gap-2"><ShieldCheck className="mt-0.5 h-4 w-4 text-primary" /> Fade-resistant UV ink, built to survive Pakistani summers</li>
-              <li className="flex items-start gap-2"><ShieldCheck className="mt-0.5 h-4 w-4 text-primary" /> Premium removable vinyl — peels clean, no residue</li>
-              <li className="flex items-start gap-2"><ShieldCheck className="mt-0.5 h-4 w-4 text-primary" /> Sized to your exact AC dimensions before printing</li>
-            </ul>
-          </div>
-        </div>
+      <section className="w-full">
+        <img
+          src={hostedAssetUrl(printerPikachu.url)}
+          alt="Wide-format printer printing Pikachu AC stickers in the Sticksy studio"
+          width={1920}
+          height={1080}
+          loading="lazy"
+          decoding="async"
+          className="block h-auto w-full"
+        />
       </section>
+
 
       {/* PRODUCTS */}
       <section id="products" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
