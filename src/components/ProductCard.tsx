@@ -34,16 +34,16 @@ function ProductCardImpl({ product }: { product: ShopifyProduct }) {
     <Link
       to="/product/$handle"
       params={{ handle: node.handle }}
-      className="group flex flex-col gap-3"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-border hover:shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
-      <div className="aspect-square w-full overflow-hidden rounded-lg bg-muted">
+      <div className="relative aspect-square w-full overflow-hidden bg-muted">
         {image ? (
           <img
             src={image.url}
             alt={image.altText ?? node.title}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-muted-foreground">
@@ -51,28 +51,34 @@ function ProductCardImpl({ product }: { product: ShopifyProduct }) {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-1">
-        <h3 className="font-medium leading-tight line-clamp-1">{node.title}</h3>
-        <p className="text-sm text-muted-foreground">
-          {formatPrice(price.amount, price.currencyCode)}
-        </p>
+      <div className="flex flex-1 flex-col gap-3 p-4">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-sm font-semibold leading-snug line-clamp-1 group-hover:text-foreground">
+            {node.title}
+          </h3>
+          <p className="text-sm font-medium text-muted-foreground">
+            {formatPrice(price.amount, price.currencyCode)}
+          </p>
+        </div>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={handleAdd}
+          disabled={isLoading || !variant || !variant.availableForSale}
+          className="mt-auto w-full rounded-full font-medium transition-colors hover:bg-primary hover:text-primary-foreground"
+        >
+          {isLoading ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : !variant?.availableForSale ? (
+            "Sold out"
+          ) : (
+            "Add to cart"
+          )}
+        </Button>
       </div>
-      <Button
-        size="sm"
-        variant="outline"
-        onClick={handleAdd}
-        disabled={isLoading || !variant || !variant.availableForSale}
-      >
-        {isLoading ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
-        ) : !variant?.availableForSale ? (
-          "Sold out"
-        ) : (
-          "Add to cart"
-        )}
-      </Button>
     </Link>
   );
 }
+
 
 export const ProductCard = memo(ProductCardImpl);
