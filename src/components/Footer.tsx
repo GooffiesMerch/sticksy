@@ -55,7 +55,7 @@ export function Footer() {
           <h4 className="mb-3 text-sm font-semibold">Contact</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4" /> hello@sticksy.shop</li>
-            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4" /> +92 300 1234567</li>
+            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4" /> +92 335 5812911</li>
             <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4" /> Lahore, Pakistan</li>
           </ul>
         </div>
