@@ -26,7 +26,10 @@ import applied1 from "@/assets/applied-1.jpg";
 import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
 import review1 from "@/assets/review-1.jpg";
 import review2 from "@/assets/review-2.jpg";
-import review3 from "@/assets/review-3.jpg";
+import review3 from "@/assets/review-3-new.jpg";
+import review4 from "@/assets/review-4-new.jpg";
+import review5 from "@/assets/review-5-new.jpg";
+import review6 from "@/assets/review-6-new.jpg";
 
 
 const productsQueryOptions = queryOptions({
@@ -375,49 +378,49 @@ function Index() {
                 img: review1,
                 name: "The Khan Family",
                 city: "Karachi",
-                text: "Whole family loves the floral design. Our living room AC finally looks like part of the décor. Even my mother-in-law approved!",
+                text: "My son insisted on applying the floral sticker himself — stood on a stool and did the whole thing in ten minutes. Our living room AC finally looks like part of the décor.",
               },
               {
                 img: review2,
                 name: "Ayesha R.",
                 city: "Lahore",
-                text: "Got the anime sticker for my bedroom AC. Quality is amazing and applying it took literally 8 minutes with the squeegee they included.",
+                text: "Got the anime sticker for my brother's gaming room. The way it glows under his RGB lights at night is unreal — he keeps staring at the AC instead of the monitor.",
               },
               {
                 img: review3,
+                name: "Zoya K.",
+                city: "Rawalpindi",
+                text: "Parcel arrived rolled up neatly with a cute Sticksy label on top. Opening it genuinely felt like unboxing a gift, not just an AC accessory.",
+              },
+              {
+                img: review4,
                 name: "Rohit M.",
                 city: "Delhi",
-                text: "Ordered a Ferrari sticker, fits perfectly on my 1.5 ton AC. Friends keep asking where I got it. Third order coming for my office.",
+                text: "The Porsche design fits my 1.5 ton AC perfectly. Took a selfie the second I finished applying it — friends keep asking where I got it from.",
+              },
+              {
+                img: review5,
+                name: "Bilal A.",
+                city: "Islamabad",
+                text: "Courier delivered it in 3 days right to my doorstep. Packaging was solid, nothing bent or damaged. Genuinely surprised by how fast the shipping was.",
+              },
+              {
+                img: review6,
+                name: "Sana & Umer",
+                city: "Multan",
+                text: "Did it as a weekend project together — one of us held the sticker, the other used the squeegee. Zero bubbles, and honestly the most fun home upgrade we've done.",
               },
               {
                 img: review1,
-                name: "Bilal A.",
-                city: "Islamabad",
-                text: "Uploaded my startup logo as a custom sticker for the office AC. Print quality is razor sharp — clients notice it in every meeting.",
-              },
-              {
-                img: review2,
-                name: "Sana & Umer",
-                city: "Rawalpindi",
-                text: "Did our son's room with the Pikachu design as a birthday surprise. He hasn't stopped smiling. Vinyl feels premium, not cheap plasticky.",
-              },
-              {
-                img: review3,
                 name: "Hamza K.",
                 city: "Faisalabad",
                 text: "Was nervous about damaging the AC paint. Peeled a corner two months later to check — zero residue. Exactly as advertised.",
               },
               {
-                img: review1,
-                name: "Meera S.",
-                city: "Multan",
-                text: "The Marvel sticker survived a full Multan summer without fading or peeling at the edges. Genuinely impressed with the durability.",
-              },
-              {
                 img: review2,
                 name: "Fatima N.",
                 city: "Peshawar",
-                text: "Ordered the F1 collection for my husband's man cave. Delivery took 3 days to Peshawar. Packaging was solid, sticker arrived perfect.",
+                text: "Ordered the F1 collection for my husband's man cave. The vinyl feels premium and the print is razor sharp under the lights.",
               },
               {
                 img: review3,
