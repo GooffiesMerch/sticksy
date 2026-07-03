@@ -25,7 +25,7 @@ import howto2 from "@/assets/howto-2.jpg";
 import applied1 from "@/assets/applied-1.jpg";
 import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
 import review1 from "@/assets/review-1.jpg";
-import review2 from "@/assets/review-2.jpg";
+import review2 from "@/assets/review-2-new.jpg";
 import review3 from "@/assets/review-3-new.jpg";
 import review4 from "@/assets/review-4-new.jpg";
 import review5 from "@/assets/review-5-new.jpg";
