@@ -396,7 +396,7 @@ function Index() {
                 img: review4,
                 name: "Rohit M.",
                 city: "Delhi",
-                text: "The Porsche design fits my 1.5 ton AC perfectly. Took a selfie the second I finished applying it — friends keep asking where I got it from.",
+                text: "The car design fits my 1.5 ton AC perfectly. My cousin snapped this the moment I stepped back to admire it — friends keep asking where I got it from.",
               },
               {
                 img: review5,
