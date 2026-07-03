@@ -390,7 +390,12 @@ function Index() {
             }).map((r) => (
 
               <div key={r.name} className="flex flex-col overflow-hidden rounded-2xl border bg-card shadow-sm">
-                <img src={r.img} alt={r.name} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                {r.img ? (
+                  <img src={r.img} alt={r.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                ) : (
+                  <div className="aspect-[4/3] w-full bg-muted" />
+                )}
+
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex gap-0.5 text-amber-500">
                     {Array.from({ length: 5 }).map((_, i) => (
