@@ -24,12 +24,6 @@ import howto1 from "@/assets/howto-1.jpg";
 import howto2 from "@/assets/howto-2.jpg";
 import applied1 from "@/assets/applied-1.jpg";
 import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
-import review1 from "@/assets/review-1.jpg";
-import review2 from "@/assets/review-2-new.jpg";
-import review3 from "@/assets/review-3-new.jpg";
-import review4 from "@/assets/review-4-new.jpg";
-import review5 from "@/assets/review-5-new.jpg";
-import review6 from "@/assets/review-6-new.jpg";
 
 
 const productsQueryOptions = queryOptions({
@@ -373,64 +367,29 @@ function Index() {
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                img: review1,
-                name: "The Khan Family",
-                city: "Karachi",
-                text: "My son insisted on applying the floral sticker himself — stood on a stool and did the whole thing in ten minutes. Our living room AC finally looks like part of the décor.",
-              },
-              {
-                img: review2,
-                name: "Ayesha R.",
-                city: "Lahore",
-                text: "Got the anime sticker for my brother's gaming room. The way it glows under his RGB lights at night is unreal — he keeps staring at the AC instead of the monitor.",
-              },
-              {
-                img: review3,
-                name: "Zoya K.",
-                city: "Rawalpindi",
-                text: "Parcel arrived rolled up neatly with a cute Sticksy label on top. Opening it genuinely felt like unboxing a gift, not just an AC accessory.",
-              },
-              {
-                img: review4,
-                name: "Rohit M.",
-                city: "Delhi",
-                text: "The car design fits my 1.5 ton AC perfectly. My cousin snapped this the moment I stepped back to admire it — friends keep asking where I got it from.",
-              },
-              {
-                img: review5,
-                name: "Bilal A.",
-                city: "Islamabad",
-                text: "Courier delivered it in 3 days right to my doorstep. Packaging was solid, nothing bent or damaged. Genuinely surprised by how fast the shipping was.",
-              },
-              {
-                img: review6,
-                name: "Sana & Umer",
-                city: "Multan",
-                text: "Did it as a weekend project together — one of us held the sticker, the other used the squeegee. Zero bubbles, and honestly the most fun home upgrade we've done.",
-              },
-              {
-                img: review1,
-                name: "Hamza K.",
-                city: "Faisalabad",
-                text: "Was nervous about damaging the AC paint. Peeled a corner two months later to check — zero residue. Exactly as advertised.",
-              },
-              {
-                img: review2,
-                name: "Fatima N.",
-                city: "Peshawar",
-                text: "Ordered the F1 collection for my husband's man cave. The vinyl feels premium and the print is razor sharp under the lights.",
-              },
-              {
-                img: review3,
-                name: "Zain & Family",
-                city: "Sialkot",
-                text: "Bought 4 stickers for every AC in the house. Kids picked anime, we picked florals. Turned a boring appliance into a conversation piece.",
-              },
-            ].map((r) => (
+            {([
+              { name: "The Khan Family", city: "Karachi", text: "My son insisted on applying the floral sticker himself — stood on a stool and did the whole thing in ten minutes. Our living room AC finally looks like part of the décor." },
+              { name: "Ayesha R.", city: "Lahore", text: "Got the anime sticker for my brother's gaming room. The way it glows under his RGB lights at night is unreal — he keeps staring at the AC instead of the monitor." },
+              { name: "Zoya K.", city: "Rawalpindi", text: "Parcel arrived rolled up neatly with a cute Sticksy label on top. Opening it genuinely felt like unboxing a gift, not just an AC accessory." },
+              { name: "Rohit M.", city: "Delhi", text: "The car design fits my 1.5 ton AC perfectly. My cousin snapped this the moment I stepped back to admire it — friends keep asking where I got it from." },
+              { name: "Bilal A.", city: "Islamabad", text: "Courier delivered it in 3 days right to my doorstep. Packaging was solid, nothing bent or damaged. Genuinely surprised by how fast the shipping was." },
+              { name: "Sana & Umer", city: "Multan", text: "Did it as a weekend project together — one of us held the sticker, the other used the squeegee. Zero bubbles, and honestly the most fun home upgrade we've done." },
+              { name: "Hamza K.", city: "Faisalabad", text: "Was nervous about damaging the AC paint. Peeled a corner two months later to check — zero residue. Exactly as advertised." },
+              { name: "Fatima N.", city: "Peshawar", text: "Ordered the F1 collection for my husband's man cave. The vinyl feels premium and the print is razor sharp under the lights." },
+              { name: "Zain & Family", city: "Sialkot", text: "Bought 4 stickers for every AC in the house. Kids picked anime, we picked florals. Turned a boring appliance into a conversation piece." },
+            ] as const).map((r, i) => {
+              const product = products[i % products.length];
+              const img = product?.node.images.edges[0]?.node;
+              return { ...r, img: img?.url, alt: img?.altText ?? product?.node.title ?? r.name };
+            }).map((r) => (
+
               <div key={r.name} className="flex flex-col overflow-hidden rounded-2xl border bg-card shadow-sm">
-                <img src={r.img} alt={r.name} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                {r.img ? (
+                  <img src={r.img} alt={r.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                ) : (
+                  <div className="aspect-[4/3] w-full bg-muted" />
+                )}
+
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex gap-0.5 text-amber-500">
                     {Array.from({ length: 5 }).map((_, i) => (
