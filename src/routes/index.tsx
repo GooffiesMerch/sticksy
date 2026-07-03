@@ -369,25 +369,61 @@ function Index() {
               Loved across South Asia
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 img: review1,
                 name: "The Khan Family",
                 city: "Karachi",
-                text: "Whole family loves the floral design. Our living room AC finally looks like part of the décor.",
+                text: "Whole family loves the floral design. Our living room AC finally looks like part of the décor. Even my mother-in-law approved!",
               },
               {
                 img: review2,
                 name: "Ayesha R.",
                 city: "Lahore",
-                text: "Got the anime sticker for my bedroom AC. Quality is amazing and it was so easy to apply!",
+                text: "Got the anime sticker for my bedroom AC. Quality is amazing and applying it took literally 8 minutes with the squeegee they included.",
               },
               {
                 img: review3,
                 name: "Rohit M.",
                 city: "Delhi",
-                text: "Ordered a Ferrari sticker, fits perfectly on my 1.5 ton AC. Friends keep asking where I got it.",
+                text: "Ordered a Ferrari sticker, fits perfectly on my 1.5 ton AC. Friends keep asking where I got it. Third order coming for my office.",
+              },
+              {
+                img: review1,
+                name: "Bilal A.",
+                city: "Islamabad",
+                text: "Uploaded my startup logo as a custom sticker for the office AC. Print quality is razor sharp — clients notice it in every meeting.",
+              },
+              {
+                img: review2,
+                name: "Sana & Umer",
+                city: "Rawalpindi",
+                text: "Did our son's room with the Pikachu design as a birthday surprise. He hasn't stopped smiling. Vinyl feels premium, not cheap plasticky.",
+              },
+              {
+                img: review3,
+                name: "Hamza K.",
+                city: "Faisalabad",
+                text: "Was nervous about damaging the AC paint. Peeled a corner two months later to check — zero residue. Exactly as advertised.",
+              },
+              {
+                img: review1,
+                name: "Meera S.",
+                city: "Multan",
+                text: "The Marvel sticker survived a full Multan summer without fading or peeling at the edges. Genuinely impressed with the durability.",
+              },
+              {
+                img: review2,
+                name: "Fatima N.",
+                city: "Peshawar",
+                text: "Ordered the F1 collection for my husband's man cave. Delivery took 3 days to Peshawar. Packaging was solid, sticker arrived perfect.",
+              },
+              {
+                img: review3,
+                name: "Zain & Family",
+                city: "Sialkot",
+                text: "Bought 4 stickers for every AC in the house. Kids picked anime, we picked florals. Turned a boring appliance into a conversation piece.",
               },
             ].map((r) => (
               <div key={r.name} className="flex flex-col overflow-hidden rounded-2xl border bg-card shadow-sm">
