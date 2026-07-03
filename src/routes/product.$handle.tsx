@@ -28,6 +28,10 @@ import pdpReview3 from "@/assets/pdp-review-3.jpg";
 import tankReview1 from "@/assets/tank-review-1.jpg";
 import tankReview2 from "@/assets/tank-review-2.jpg";
 import tankReview3 from "@/assets/tank-review-3.jpg";
+import tankReview4 from "@/assets/tank-review-4.jpg";
+import tankReview5 from "@/assets/tank-review-5.jpg";
+import tankReview6 from "@/assets/tank-review-6.jpg";
+import tankReview7 from "@/assets/tank-review-7.jpg";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -310,6 +314,34 @@ function ProductDetail() {
             location: "Rawalpindi, PK",
             title: "Cool water even in peak summer",
             body: "Our tank sits in direct sun on the roof and used to give scalding water by afternoon. With this cover the water stays genuinely cool — perfect for bath after work and for filling bottles before my daily commute. Game changer in June.",
+          },
+          {
+            img: tankReview4,
+            name: "Hamza T.",
+            location: "Lahore, PK",
+            title: "Installed it myself in 15 minutes",
+            body: "Straps were long enough to reach all the way around my 1000L tank and the fit is snug. Didn't need a plumber — just followed the guide on the roof and it was done before Zuhr.",
+          },
+          {
+            img: tankReview5,
+            name: "Zeeshan H.",
+            location: "Karachi, PK",
+            title: "Looks clean, works great",
+            body: "The reflective silver finish looks neat on the roof and the water is noticeably cooler by afternoon. Rain hasn't affected it either — still holding tight after two months.",
+          },
+          {
+            img: tankReview6,
+            name: "Usman & Adeel",
+            location: "Multan, PK",
+            title: "Two-man job, super easy",
+            body: "My brother and I fitted this on our shared 1500L tank in one go. Fabric feels thick and the straps lock in place properly. Water temp dropped a lot within the first day.",
+          },
+          {
+            img: tankReview7,
+            name: "Sana M.",
+            location: "Islamabad, PK",
+            title: "Finally a solution for our rooftop tank",
+            body: "Delivery was quick and my husband installed it the same evening. The cover fit our tank perfectly and the water no longer turns lukewarm by afternoon. Highly recommend for every home in Pakistan.",
           },
         ],
         faqs: TANK_FAQS,
