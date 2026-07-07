@@ -24,6 +24,16 @@ import howto1 from "@/assets/howto-1.jpg";
 import howto2 from "@/assets/howto-2.jpg";
 import applied1 from "@/assets/applied-1.jpg";
 import tutorialVideo from "@/assets/tutorial-apply.mp4.asset.json";
+import rvFamily from "@/assets/reviews/review-family.jpg";
+import rvAnime from "@/assets/reviews/review-anime-rgb.jpg";
+import rvUnboxing from "@/assets/reviews/review-unboxing.jpg";
+import rvCar from "@/assets/reviews/review-car-ac.jpg";
+import rvParcel from "@/assets/reviews/review-parcel-door.jpg";
+import rvCouple from "@/assets/reviews/review-couple-apply.jpg";
+import rvPeel from "@/assets/reviews/review-peel-check.jpg";
+import rvF1 from "@/assets/reviews/review-f1-mancave.jpg";
+import rvMulti from "@/assets/reviews/review-multi-ac.jpg";
+
 
 
 const productsQueryOptions = queryOptions({
@@ -368,20 +378,16 @@ function Index() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {([
-              { name: "The Khan Family", city: "Karachi", text: "My son insisted on applying the floral sticker himself — stood on a stool and did the whole thing in ten minutes. Our living room AC finally looks like part of the décor." },
-              { name: "Ayesha R.", city: "Lahore", text: "Got the anime sticker for my brother's gaming room. The way it glows under his RGB lights at night is unreal — he keeps staring at the AC instead of the monitor." },
-              { name: "Zoya K.", city: "Rawalpindi", text: "Parcel arrived rolled up neatly with a cute Sticksy label on top. Opening it genuinely felt like unboxing a gift, not just an AC accessory." },
-              { name: "Rohit M.", city: "Delhi", text: "The car design fits my 1.5 ton AC perfectly. My cousin snapped this the moment I stepped back to admire it — friends keep asking where I got it from." },
-              { name: "Bilal A.", city: "Islamabad", text: "Courier delivered it in 3 days right to my doorstep. Packaging was solid, nothing bent or damaged. Genuinely surprised by how fast the shipping was." },
-              { name: "Sana & Umer", city: "Multan", text: "Did it as a weekend project together — one of us held the sticker, the other used the squeegee. Zero bubbles, and honestly the most fun home upgrade we've done." },
-              { name: "Hamza K.", city: "Faisalabad", text: "Was nervous about damaging the AC paint. Peeled a corner two months later to check — zero residue. Exactly as advertised." },
-              { name: "Fatima N.", city: "Peshawar", text: "Ordered the F1 collection for my husband's man cave. The vinyl feels premium and the print is razor sharp under the lights." },
-              { name: "Zain & Family", city: "Sialkot", text: "Bought 4 stickers for every AC in the house. Kids picked anime, we picked florals. Turned a boring appliance into a conversation piece." },
-            ] as const).map((r, i) => {
-              const product = products[i % products.length];
-              const img = product?.node.images.edges[0]?.node;
-              return { ...r, img: img?.url, alt: img?.altText ?? product?.node.title ?? r.name };
-            }).map((r) => (
+              { name: "The Khan Family", city: "Karachi", text: "My son insisted on applying the floral sticker himself — stood on a stool and did the whole thing in ten minutes. Our living room AC finally looks like part of the décor.", img: rvFamily, alt: "Mother and son standing under an AC with a floral Sticksy sticker" },
+              { name: "Ayesha R.", city: "Lahore", text: "Got the anime sticker for my brother's gaming room. The way it glows under his RGB lights at night is unreal — he keeps staring at the AC instead of the monitor.", img: rvAnime, alt: "Anime sticker on AC glowing under RGB gaming lights" },
+              { name: "Zoya K.", city: "Rawalpindi", text: "Parcel arrived rolled up neatly with a cute Sticksy label on top. Opening it genuinely felt like unboxing a gift, not just an AC accessory.", img: rvUnboxing, alt: "Customer opening a Sticksy parcel box on the floor" },
+              { name: "Rohit M.", city: "Delhi", text: "The car design fits my 1.5 ton AC perfectly. My cousin snapped this the moment I stepped back to admire it — friends keep asking where I got it from.", img: rvCar, alt: "Customer admiring a sports car sticker freshly applied on his AC" },
+              { name: "Bilal A.", city: "Islamabad", text: "Courier delivered it in 3 days right to my doorstep. Packaging was solid, nothing bent or damaged. Genuinely surprised by how fast the shipping was.", img: rvParcel, alt: "Sticksy parcel box delivered at the front door" },
+              { name: "Sana & Umer", city: "Multan", text: "Did it as a weekend project together — one of us held the sticker, the other used the squeegee. Zero bubbles, and honestly the most fun home upgrade we've done.", img: rvCouple, alt: "Couple applying a Sticksy vinyl sticker on their AC together" },
+              { name: "Hamza K.", city: "Faisalabad", text: "Was nervous about damaging the AC paint. Peeled a corner two months later to check — zero residue. Exactly as advertised.", img: rvPeel, alt: "Hand peeling back a corner of an AC sticker to check the paint" },
+              { name: "Fatima N.", city: "Peshawar", text: "Ordered the F1 collection for my husband's man cave. The vinyl feels premium and the print is razor sharp under the lights.", img: rvF1, alt: "Formula 1 sticker on an AC in a lounge man cave" },
+              { name: "Zain & Family", city: "Sialkot", text: "Bought 4 stickers for every AC in the house. Kids picked anime, we picked florals. Turned a boring appliance into a conversation piece.", img: rvMulti, alt: "Two ACs side by side with anime and floral Sticksy stickers" },
+            ] as const).map((r) => (
 
               <div key={r.name} className="flex flex-col overflow-hidden rounded-2xl border bg-card shadow-sm">
                 {r.img ? (
