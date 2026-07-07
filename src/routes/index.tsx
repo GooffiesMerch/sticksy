@@ -33,7 +33,7 @@ import rvCouple from "@/assets/reviews/review-couple-apply.jpg";
 import rvPeel from "@/assets/reviews/review-peel-check.jpg";
 import rvF1 from "@/assets/reviews/review-f1-mancave.jpg";
 import rvMulti from "@/assets/reviews/review-multi-ac.jpg";
-import rvLooking from "@/assets/reviews/review-looking.jpg";
+
 
 
 const productsQueryOptions = queryOptions({
