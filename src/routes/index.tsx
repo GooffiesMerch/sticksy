@@ -386,7 +386,7 @@ function Index() {
               { name: "Sana & Umer", city: "Multan", text: "Did it as a weekend project together — one of us held the sticker, the other used the squeegee. Zero bubbles, and honestly the most fun home upgrade we've done.", img: rvCouple, alt: "Couple applying a Sticksy vinyl sticker on their AC together" },
               { name: "Hamza K.", city: "Faisalabad", text: "Was nervous about damaging the AC paint. Peeled a corner two months later to check — zero residue. Exactly as advertised.", img: rvPeel, alt: "Hand peeling back a corner of an AC sticker to check the paint" },
               { name: "Fatima N.", city: "Peshawar", text: "Ordered the F1 collection for my husband's man cave. The vinyl feels premium and the print is razor sharp under the lights.", img: rvF1, alt: "Formula 1 sticker on an AC in a lounge man cave" },
-              { name: "Zain & Family", city: "Sialkot", text: "Bought 4 stickers for every AC in the house. Kids picked anime, we picked florals. Turned a boring appliance into a conversation piece.", img: rvMulti, alt: "Two ACs side by side with anime and floral Sticksy stickers" },
+              { name: "Zain & Family", city: "Sialkot", text: "Kids picked the anime design themselves and haven't stopped staring at the AC since. Turned a boring appliance into their favourite thing in the room.", img: rvMulti, alt: "Kids looking up at an AC with an anime Sticksy sticker" },
             ] as const).map((r) => (
 
               <div key={r.name} className="flex flex-col overflow-hidden rounded-2xl border bg-card shadow-sm">
