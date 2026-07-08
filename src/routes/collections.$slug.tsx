@@ -69,8 +69,8 @@ function CollectionPage() {
         </Button>
 
         <div className="mb-10 flex flex-col items-center gap-4 text-center">
-          <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-muted">
-            <img src={c.logo} alt={c.name} className="h-20 w-20 object-contain" />
+          <div className="flex h-40 w-40 items-center justify-center overflow-hidden rounded-2xl bg-muted sm:h-56 sm:w-56">
+            <img src={c.logo} alt={c.name} className="h-full w-full object-cover" />
           </div>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{c.name}</h1>
           <p className="max-w-xl text-muted-foreground">{c.tagline}</p>
